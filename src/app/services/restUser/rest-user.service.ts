@@ -21,8 +21,8 @@ export class RestUserService {
     })
   };
 
-  public user: any;
-  public token: any;
+  public user;
+  public token;
 
   private extractData(res: Response){
     let body = res;
@@ -34,11 +34,10 @@ export class RestUserService {
   }
 
   //Function Login
-  login(user:any, token:any){
+  login(user, token){
     user.gettoken = token;
     let params = JSON.stringify(user);
-    return this.http.post(this.uri+'login', params, this.httpOptionAuth)
-    .pipe(map(this.extractData));
+    return this.http.post(this.uri+'login',params,this.httpOptions).pipe(map(this.extractData));
   }
 
   //function getUsers
