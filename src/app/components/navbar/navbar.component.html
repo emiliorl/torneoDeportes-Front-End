@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+    <div class="container-fluid">
+      <a routerLink="/home">
+        <img class="imgUser" src="../../../assets/img/logo sport referee.jpeg" alt="Logo Web Hotel">
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">      
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0" id="lista">
+        <li class="nav-item">
+          <a class=""></a>
+        </li>        
+        <li class="nav-item">
+            <a class="text-dark" routerLink="" routerLinkActivate="active">
+                Tournaments
+            </a>
+          </li>
+        <li class="nav-item">
+            <!--*ngIf='token == null' --> 
+          <a class="text-dark" routerLink="/login" routerLinkActivate="active">
+              Log in
+          </a>            
+          <!--<a class="nav-link" href="#">Perfil</a>-->            
+        </li>
+      <!--*ngIf="token != null || token != undefined"-->
+        <li class="nav-item dropdown" >
+          <a class="text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">            Usuario
+          </a>
+          <ul class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown" aria-haspopup="true" aria-expanded="false">
+            <li><a class="dropdown-item" routerLink="">Perfil</a></li>            
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" >LogOut</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    </div>    
+  </nav>

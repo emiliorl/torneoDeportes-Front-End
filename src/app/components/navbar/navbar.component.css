@@ -1,0 +1,26 @@
+.navbar{
+    background-color: #ffffff;
+    border-collapse: collapse;    
+    border-bottom: rgb(228, 82, 82) solid;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    color: black;
+}
+
+.navbar-brand{
+    color: black
+}
+
+.imgUser{
+    width: 115;
+    height: 70px;
+}
+
+a {
+    text-decoration: none;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 1rem;
+    padding-top: auto;
+}
