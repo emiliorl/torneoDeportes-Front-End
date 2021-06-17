@@ -24,3 +24,14 @@ a {
     padding-left: 1rem;
     padding-top: auto;
 }
+
+#navbarDropdown{
+    margin: 0.5rem 2rem;    
+    text-decoration: none;
+    color:#FF9100;
+    outline: none;    
+}
+
+.dropdown-menu{
+    right: 0;
+}
