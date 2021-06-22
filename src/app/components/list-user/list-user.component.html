@@ -1,0 +1,64 @@
+<div>
+    <table class="table table-sm">
+        <thead class="table-success">            
+            <tr>
+                <th>No.</th>
+                <th>Name</th>            
+                <th>LastName</th>
+                <th>Username</th>
+                <th>Rol</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let user of users let i = index">
+            <td>{{i+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.rol}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <!--
+                <td><a data-toggle="modal" data-target="#exampleModal">More_Options</a></td>    
+            -->
+            <td><a (click)="obtenerData(user)">More_Options</a></td>
+        </tr>            
+    </table>
+  </div>
+
+  <!--
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">More options</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <h5 class="text-center">LLena las casillas con la información de tu cuenta ADMIN</h5>
+        <form #userRemoved='ngForm'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userOptions">username</label>
+                    <input [(ngModel)]='user.username' type="text" id='userOptions' name='username' required>
+                </div>
+
+                <div>
+                    <label for="passwordRemove">password</label>
+                    <input [(ngModel)]='user.password' type="password" id='passwordRemove' name='possiblePass' required>            
+                </div>
+            </div>                        
+        </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" data-dismiss="modal" class="btn btn-danger" (click)='optionsOfAdmin(userRemoved)' [disabled]="!userRemoved.form.valid">I'm sure</button>
+        </div>
+    </div>
+    </div>
+</div>
+  -->   

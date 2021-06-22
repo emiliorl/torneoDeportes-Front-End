@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         alert(res.message);
       }else{
         this.token = res.token;
-        delete this.userLogged.password;
         if(this.token.length <= 0){
           alert('El token no se genero de manera correcta');
         }else{

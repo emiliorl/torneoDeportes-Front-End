@@ -21,6 +21,15 @@ export class CreateUserByAdminComponent implements OnInit {
   }
 
   onSubmit(statusForm){
-
+    this.restUser.saveUserByAdmin(this.user, this.userLogg._id).subscribe((res:any) => {
+      if(res.userSaved){
+        alert(res.message);
+        this.user = new User('','','','','',null,'','','');
+        statusForm.reset();
+      }else{
+        alert(res.message);
+      }
+    },
+    error => alert(error.error.message));
   }
 }

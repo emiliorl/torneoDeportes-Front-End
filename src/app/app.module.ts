@@ -15,6 +15,8 @@ import { RestUserService } from './services/restUser/rest-user.service';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateUserByAdminComponent } from './components/create-user-by-admin/create-user-by-admin.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { ProfileUserSelectComponent } from './components/profile-user-select/profile-user-select.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CreateUserByAdminComponent } from './components/create-user-by-admin/cr
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CreateUserByAdminComponent
+    CreateUserByAdminComponent,
+    ListUserComponent,
+    ProfileUserSelectComponent
   ],
   imports: [
     BrowserModule,

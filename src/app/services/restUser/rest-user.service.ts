@@ -23,6 +23,7 @@ export class RestUserService {
 
   public user;
   public token;
+  public userSelect;
 
   private extractData(res: Response){
     let body = res;
@@ -37,7 +38,7 @@ export class RestUserService {
   login(user, token){
     user.gettoken = token;
     let params = JSON.stringify(user);
-    return this.http.post(this.uri+'login',params,this.httpOptions).pipe(map(this.extractData));
+    return this.http.post(this.uri+'login',params,this.httpOptions).pipe(map(this.extractData));    
   }
 
   //function getUsers
@@ -59,6 +60,16 @@ export class RestUserService {
       this.token = null;
     }
     return this.token;
+  }
+
+  getUserSelect(){
+    let userSelect = JSON.parse(localStorage.getItem('userSelect'));
+    if(userSelect != undefined || userSelect != null){
+      this.userSelect = userSelect;
+    }else{
+      this.userSelect = null;
+    }
+    return this.userSelect;
   }
 
   saveUser(user){
@@ -109,5 +120,41 @@ export class RestUserService {
       xhr.setRequestHeader('Authorization', token);
       xhr.send(formData);
     });
+  }
+
+  saveUserByAdmin(user, idAdmin){
+    let params = JSON.stringify(user);
+    return this.http.post(this.uri+'createUserByAdmin/'+idAdmin, params, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+
+  getUsers(){
+    return this.http.get(this.uri+'/listUsers', this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+
+  AdvancedOptions(user){
+    let params = JSON.stringify(user);
+    console.log('estamos aqui: '+ params);
+
+    return this.http.post(this.uri+'optionsOfAdmin', params, this.httpOptions)
+    .pipe(map(this.extractData));
+  }
+
+  updateAdvancedOption(userToUpdate, idAdmin, idUser){
+    let params = JSON.stringify(userToUpdate);
+
+    return this.http.put(this.uri+'editUserByAdmin/'+idUser+'/'+idAdmin, params, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+
+  removeAdvancedOption(password, idAdmin, idUser){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+
+    return this.http.put(this.uri+'DeleteUserByAdmin/'+idUser+'/'+idAdmin, {password:password}, {headers:headers})
+    .pipe(map(this.extractData));
   }
 }
