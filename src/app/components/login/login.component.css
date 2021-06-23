@@ -34,11 +34,16 @@ body{
     border-bottom-left-radius: 0;
 }
 
-button{
-    border-radius: 15px;
+#buttonLogIn{
+    background-color: #1FB4D5 !important;
+    color: #ffffff;
+    border-radius: 1rem;    
+    font-weight: bold;
 }
 
-button:hover{
-    transition: all 1.8s;
-    background-color: #5278bd;
+#buttonSignUp{
+    background-color: #FF9100 !important;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-weight: bold;
 }

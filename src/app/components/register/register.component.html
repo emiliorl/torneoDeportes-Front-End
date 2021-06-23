@@ -60,7 +60,14 @@
                 <label class="form-check-label" for="check">I aggree the terms and conditions</label>
             </div>
         </div>
-        
-        <button type="submit" class="btn btn-danger" [disabled]="!register.form.valid">Sign Up</button>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12"><button id="buttonLogIn" class="btn col-5" type="submit" [disabled]='!register.form.valid'>Sign Up</button></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12"><button id="buttonSignUp" class="btn col-5" type="button" routerLink="/login">Log In</button></div>
+            </div>
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; Sport Referee 2021</p>
     </form>
 </body>

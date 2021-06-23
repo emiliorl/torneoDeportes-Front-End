@@ -1,6 +1,8 @@
 <div>
-    <table class="table table-sm">
-        <thead class="table-success">            
+    <h1>List of users with rol "User"</h1>
+    <br>
+    <table>
+        <thead>            
             <tr>
                 <th>No.</th>
                 <th>Name</th>            
@@ -23,7 +25,7 @@
             <!--
                 <td><a data-toggle="modal" data-target="#exampleModal">More_Options</a></td>    
             -->
-            <td><a (click)="obtenerData(user)">More_Options</a></td>
+            <td><button id="buttonEdit" type="button" (click)="obtenerData(user)">Edit/Remove</button></td>
         </tr>            
     </table>
   </div>

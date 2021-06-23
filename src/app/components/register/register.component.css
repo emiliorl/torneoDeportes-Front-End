@@ -7,7 +7,6 @@ body{
     align-items: center;
     padding-top: 40px;
     padding-bottom: 15%;
-    background-color: #f5f5f5;
 }
 
 .bd-placeholder-img{
@@ -37,4 +36,18 @@ body{
     height: auto;
     font-size: 15px;
     padding: 15px;
+}
+
+#buttonLogIn{
+    background-color: #1FB4D5 !important;
+    color: #ffffff;
+    border-radius: 1rem;    
+    font-weight: bold;
+}
+
+#buttonSignUp{
+    background-color: #FF9100 !important;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-weight: bold;
 }

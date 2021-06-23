@@ -14,8 +14,14 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-danger btn-block bg-success" type="submit" [disabled]='!login.form.valid'>Log In</button>
-        <button class="btn btn-lg btn-danger btn-block bg-warning" type="button" routerLink="/register">Sign Up</button>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12"><button id="buttonLogIn" class="btn col-9" type="submit" [disabled]='!login.form.valid'>Log In</button></div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12"><button id="buttonSignUp" class="btn col-9" type="button" routerLink="/register">Sign Up</button></div>
+            </div>
+        </div>
         <p class="mt-5 mb-3 text-muted">&copy; Sport Referee 2021</p>
     </form>
 </body>
