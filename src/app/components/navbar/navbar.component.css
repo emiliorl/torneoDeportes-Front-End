@@ -13,7 +13,7 @@
 
 .imgUser{
     width: 115;
-    height: 70px;
+    height: 80px;
 }
 
 a {
@@ -35,4 +35,11 @@ a {
 .dropdown-menu{
     right: 0;
     
+}
+
+#deportesName, #deportesName:hover{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    line-height: 0.9em;
 }

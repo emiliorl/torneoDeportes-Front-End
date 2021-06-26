@@ -39,7 +39,7 @@ export class ProfileUserSelectComponent implements OnInit {
         this.user = this.restUser.getUserSelect();
       }
     },
-    (error:any) => alert(error.error.message)
+    (error:any) => alert(error.message)
     )
   }
 

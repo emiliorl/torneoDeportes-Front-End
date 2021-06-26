@@ -2,7 +2,7 @@
     <form class="form-signin" #userUpdate="ngForm" (ngSubmit)="onSubmit()">
         <h1>{{user.username}}</h1>
         <br>
-        <img data-toggle="modal" data-target="#imageModal" *ngIf="user.image" id="imagePerfil" class ="mb-4" width="72" height="72" src="{{uri+'getImage/'+user.image}}" alt="imagen de una agenda">
+        <img data-toggle="modal" data-target="#imageModal" *ngIf="user.image" id="imagePerfil" class ="mb-4" width="72" height="72" src="{{uri+'getImage/'+user.image}}" alt="Profile Picture">
         <img data-toggle="modal" data-target="#imageModal" *ngIf="user.image == '' || user.image == undefined" id="imagePerfil" class ="mb-4" width="72" height="72" src="../../../assets/img/userNavbar.png" alt="imagen de una agenda">        
         <hr>        
         <div class="form-row">

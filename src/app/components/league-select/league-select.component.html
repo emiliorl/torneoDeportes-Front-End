@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Home</title>
+    <link rel="stylesheet" href="league-select.component.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": ""}
+    </script>
+
+
+
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+  </head>
+  <body class="u-body" style="overflow: hidden; margin-bottom: 5rem;">
+    <section class="u-align-center u-clearfix u-section-1" id="sec-8c71">
+      <div class="u-clearfix u-sheet u-valign-middle-md u-sheet-1">
+        <p class="u-align-center u-text u-text-1" style="text-transform: uppercase;">{{league.nameLeague}}</p>
+        <div *ngIf="!user; else buttonEdit"></div>
+        <ng-template #buttonEdit>
+          <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>
+        </ng-template>
+        <div class="u-expanded-width-xs u-table u-table-responsive u-table-1">
+          <table class="u-table-entity u-table-entity-1">
+            <colgroup>
+              <col width="74.7%">
+              <col width="25.3%">
+            </colgroup>
+            <thead class="u-palette-2-base u-table-header u-table-header-1">
+              <tr style="height: 37px;">
+                <th class="u-table-cell">NAME</th>
+                <th class="u-table-cell">POINTS</th>
+              </tr>
+            </thead>
+            <tbody class="u-align-center u-table-alt-palette-2-light-3 u-table-body">
+              <tr class=trHL style="height: 65px;" *ngFor="let team of teams let i = index" (click)="selectTeam(team)">
+                <td class="u-align-left u-first-column u-table-cell u-table-cell-3" style="text-transform: uppercase;">{{team.nameTeam}}</td>
+                <td class="u-table-cell">{{team.points}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>        
+        <google-chart #chart class="u-image u-image-default u-image-1"  
+          type="PieChart"
+          [data]="data"
+          height="auto"
+          [options]="options" (click)="selectTeam()">  
+        </google-chart>
+        <!-- <table class="u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
+                <tr *ngFor="let match of matches let i = index">
+                    <td>{{match.date | date: 'd/MM/yyyy'}}</td>
+                    <td>{{match.teams[0].nameTeam}}</td>
+                    <td>-</td>
+                    <td>{{match.teams[1].nameTeam}}</td>
+                </tr>            
+            </table> -->
+
+        <div class="container u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
+          <div class="calendar light">
+            <div class="calendar_header">
+              <h1 class = "header_title">Upcoming matches</h1>
+            </div>
+            <div class="calendar_events" *ngFor="let match of matches">
+              <div class="event_item" *ngIf="match.date >= today">
+                <div class="ei_Title" >{{match.date | date: 'd/MM/yyyy'}}</div>
+                <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+    
+  </body>
+</html>

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GoogleChartsModule } from 'angular-google-charts';  
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,6 +18,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CreateUserByAdminComponent } from './components/create-user-by-admin/create-user-by-admin.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { ProfileUserSelectComponent } from './components/profile-user-select/profile-user-select.component';
+import { LeagueComponent } from './components/league/league.component';
+import { LeagueSelectComponent } from './components/league-select/league-select.component';
+import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +32,17 @@ import { ProfileUserSelectComponent } from './components/profile-user-select/pro
     ProfileComponent,
     CreateUserByAdminComponent,
     ListUserComponent,
-    ProfileUserSelectComponent
+    ProfileUserSelectComponent,
+    LeagueComponent,
+    LeagueSelectComponent,
+    ProfileLeagueComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleChartsModule  
   ],
   providers: [RestUserService],
   bootstrap: [AppComponent]

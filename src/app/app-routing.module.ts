@@ -8,6 +8,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileUserSelectComponent } from './components/profile-user-select/profile-user-select.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LeagueComponent } from './components/league/league.component';
+import { LeagueSelectComponent } from './components/league-select/league-select.component';
+import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'createUser', component: CreateUserByAdminComponent},
   {path: 'listUsers', component: ListUserComponent},
-  {path: 'profileUserSelect', component: ProfileUserSelectComponent}
+  {path: 'profileUserSelect', component: ProfileUserSelectComponent},
+  {path: 'leagues', component: LeagueComponent},
+  {path: 'leagueSelect', component: LeagueSelectComponent},
+  {path: 'profileLeague', component: ProfileLeagueComponent}
 ];
 
 @NgModule({
