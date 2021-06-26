@@ -12,6 +12,8 @@ export class RestPlayerService {
 
   public uri;
   public service;
+  public token;
+  public player;
 
   public httpOptionAuth = {
     headers: new HttpHeaders({
@@ -29,20 +31,30 @@ export class RestPlayerService {
     this.uri = CONNECTION.URI;
   }
 
+  getToken(){
+    let token = localStorage.getItem('token');
+    if(token != undefined || token != null){
+      this.token = token;
+    }else{
+      this.token = null;
+    }
+    return this.token;
+  }
+
   createPlayer(service,userId){
     let params = JSON.stringify(service);
-    return this.http.post(this.uri+'/'+userId+'/createPlayer/', params, this.HttpOptionsAuth)
+    return this.http.post(this.uri+'/'+userId+'/createPlayer/', params, this.httpOptionAuth)
     .pipe(map(this.extractData))
   }
 
   updatePlayer(paramsUpdate, userId, teamId){
     let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/'+teamId, params, this.HttpOptionsAuth)
+    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/'+teamId, params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
   deletePlayer(userId,teamId, password, player){
-    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, {name: player, passwordAdmin: password}, this.HttpOptionsAuth)
+    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, {name: player, passwordAdmin: password}, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
@@ -51,4 +63,13 @@ export class RestPlayerService {
     .pipe(map(this.extractData));
   }
 
+  getPlayer(){
+    let player = JSON.parse(localStorage.getItem('league'));
+    if(player != undefined || player != null){
+      this.player = player;
+    }else{
+      this.player = null;
+    }
+    return this.player;
+  }
 }
