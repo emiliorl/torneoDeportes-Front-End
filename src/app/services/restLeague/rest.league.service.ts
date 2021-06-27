@@ -64,12 +64,6 @@ export class RestLeagueService {
     return this.leagueSelect;
   }
 
-  saveUser(user){
-    let params = JSON.stringify(user);
-    return this.http.post(this.uri+'signUp', params, this.httpOptions)
-    .pipe(map(this.extractData));
-  }
-
   updateLeague(userV,leagueToUpdate){
     let params = JSON.stringify(leagueToUpdate);
     let headers = new HttpHeaders({
@@ -80,21 +74,17 @@ export class RestLeagueService {
     .pipe(map(this.extractData));
   }
 
-  removeUser(userDelete, password){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.getToken()
-    });
+  deleteLeague(user, leagueDelete){
 
-    return this.http.put(this.uri+'removeUser/'+userDelete, {password: password}, {headers: headers})
+    return this.http.post(this.uri+user+'/deleteLeague/'+leagueDelete, {} ,this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
-  uploadImage(idUser:string, params: Array<string>, files: Array<File>, token:string, name:string){
+  uploadImage(idUser,idLeague, params: Array<string>, files: Array<File>, token:string, name:string){
     return new Promise((resolve, reject) => {
       var formData: any = new FormData();
       var xhr = new XMLHttpRequest();
-      let uri = this.uri+idUser+'/uploadImage';
+      let uri = this.uri+idUser+'/'+idLeague+'/uploadImage';
 
       for(var i=0; i<files.length; i++){
         formData.append(name, files[i], files[i].name)
@@ -114,9 +104,9 @@ export class RestLeagueService {
     });
   }
 
-  saveUserByAdmin(user, idAdmin){
-    let params = JSON.stringify(user);
-    return this.http.post(this.uri+'createUserByAdmin/'+idAdmin, params, this.httpOptionAuth)
+  createLeague(user, league){
+    let params = JSON.stringify(league);
+    return this.http.post(this.uri+user+'/createLeague/', params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
@@ -127,31 +117,6 @@ export class RestLeagueService {
 
   getMyLeagues(user){
     return this.http.get(this.uri+user+'/listLeagues', this.httpOptionAuth)
-    .pipe(map(this.extractData));
-  }
-
-  AdvancedOptions(user){
-    let params = JSON.stringify(user);
-    console.log('estamos aqui: '+ params);
-
-    return this.http.post(this.uri+'optionsOfAdmin', params, this.httpOptions)
-    .pipe(map(this.extractData));
-  }
-
-  updateAdvancedOption(userToUpdate, idAdmin, idUser){
-    let params = JSON.stringify(userToUpdate);
-
-    return this.http.put(this.uri+'editUserByAdmin/'+idUser+'/'+idAdmin, params, this.httpOptionAuth)
-    .pipe(map(this.extractData));
-  }
-
-  removeAdvancedOption(password, idAdmin, idUser){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.getToken()
-    });
-
-    return this.http.put(this.uri+'DeleteUserByAdmin/'+idUser+'/'+idAdmin, {password:password}, {headers:headers})
     .pipe(map(this.extractData));
   }
 }

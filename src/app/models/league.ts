@@ -1,7 +1,7 @@
 export class League{
 
     constructor(
-        public _id: String,
+        public _id: string,
         public nameLeague: String,
         public descriptionLeague: String,
         public startingDate: Date,
