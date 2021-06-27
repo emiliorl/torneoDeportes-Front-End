@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CONNECTION } from 'src/app/services/global';
 import { League } from 'src/app/models/league';
 import { RestLeagueService } from 'src/app/services/restLeague/rest.league.service';
 import { Router } from '@angular/router';
@@ -12,25 +13,28 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 })
 export class LeagueComponent implements OnInit {
   public user: User;
+  public uri: string;
+  token: string;
   leagues: [];
+  myLeagues: [];
   leagueslength;
   search;
   league;
   leagueSelect: League;
 
-  constructor(private restLeague: RestLeagueService, private restUser:RestUserService, private route: Router) { }
+  constructor(private restLeague: RestLeagueService, private restUser:RestUserService, private route: Router) { 
+    this.uri = CONNECTION.URI;
+  }
 
   ngOnInit(): void {
     this.league = new League('','','',null,[],'',[],[],'');
     this.user = new User('','','','','',null,'','','');
+    this.token = localStorage.getItem('token');
     this.user = this.restUser.getUser();
     if(this.user != null){
       this.listMyLeagues();
     }
     this.listLeagues();
-    if(this.leagues != undefined){
-      this.leagueslength = this.leagues.length;
-    }
   }
 
   listLeagues(){
@@ -51,7 +55,7 @@ export class LeagueComponent implements OnInit {
   listMyLeagues(){
     this.restLeague.getMyLeagues(this.user._id).subscribe((res:any) => {
       if(res.leagueFind){
-        this.leagues = res.leagueFind;
+        this.myLeagues = res.leagueFind;
       }else{
         alert(res.message)
       }

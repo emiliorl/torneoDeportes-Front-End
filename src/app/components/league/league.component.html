@@ -3,11 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
-<link rel="stylesheet" href="league.component.css" media="screen">
+    <title>List Leagues</title>
+    <link rel="stylesheet" href="league.component.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.17.2, nicepage.com">
@@ -27,22 +24,41 @@
     <section class="u-clearfix u-section-1" id="sec-9b13">
       <div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-text u-text-1" style="text-align: center;">LEAGUES</p>
-        <div *ngIf="leagues == undefined || leagues.length == 0; else leaguesList" style="text-align: center;"><h1 style="font-weight: bold;">Sorry...<br>No Leagues to show</h1></div>
+        <div *ngIf="token == null || token == undefined; else myLeaguesT"></div>
+        <ng-template #myLeaguesT>
+          <h1 style="font-weight: bold;">My Leagues</h1>
+          <button id="buttonCreate" type="button" routerLink="/createLeague">Create League</button>
+          <div class="u-expanded-width u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
+                <div class="u-container-style u-list-item u-repeater-item" *ngFor="let league of myLeagues let i = index">
+                  <div class="u-container-layout u-similar-container u-container-layout-1">
+                    <img style="border-radius: 6px; cursor: pointer;" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague" id="imageLeague" src="{{uri+'getImageLeague/'+league.imageLeague}}" alt="League Picture" (click)="obtenerData(league)">
+                    <img style="border-radius: 6px; cursor: pointer" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague == '' || league.imageLeague == undefined" id="imageLeague" src="../../../assets/img/2.png" alt="League Profile" (click)="obtenerData(league)">        
+                    <h3 class="u-text u-text-2" style="font-weight: bold; ; cursor: pointer; text-transform: uppercase;" (click)="obtenerData(league)">{{league.nameLeague}}</h3>
+                    <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <a class="u-border-1 u-border-black u-border-hover-palette-2-base u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-text-hover-palette-2-base u-btn-1" (click)="obtenerData(league)">learn more</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </ng-template>
+        <div *ngIf="(leagues == undefined || leagues.length == 0) && (token == null || token == undefined) ; else leaguesList" style="text-align: center;"><h1 style="font-weight: bold;">Sorry...<br>No Leagues to show</h1></div>
+        <ng-template #leaguesList>
+        <h1 style="font-weight: bold;">Public Leagues</h1>
         <div class="u-expanded-width u-list u-list-1">
           <div class="u-repeater u-repeater-1">
-            <ng-template #leaguesList>
               <div class="u-container-style u-list-item u-repeater-item" *ngFor="let league of leagues let i = index">
                 <div class="u-container-layout u-similar-container u-container-layout-1">
-                  <img style="border-radius: 6px" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague" id="imageLeague" src="{{uri+'getImage/'+league.imageLeague}}" alt="League Picture" (click)="obtenerData(league)">
+                  <img style="border-radius: 6px" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague" id="imageLeague" src="{{uri+'getImageLeague/'+league.imageLeague}}" alt="League Picture" (click)="obtenerData(league)">
                   <img style="border-radius: 6px" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague == '' || league.imageLeague == undefined" id="imageLeague" src="../../../assets/img/2.png" alt="League Profile" (click)="obtenerData(league)">        
                   <h3 class="u-text u-text-2" style="font-weight: bold; text-transform: uppercase;" (click)="obtenerData(league)">{{league.nameLeague}}</h3>
                   <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
                   <a class="u-border-1 u-border-black u-border-hover-palette-2-base u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-text-hover-palette-2-base u-btn-1" (click)="obtenerData(league)">learn more</a>
                 </div>
               </div>
-            </ng-template>
           </div>
         </div>
+        </ng-template>
       </div>
     </section>
     

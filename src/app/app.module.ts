@@ -21,6 +21,7 @@ import { ProfileUserSelectComponent } from './components/profile-user-select/pro
 import { LeagueComponent } from './components/league/league.component';
 import { LeagueSelectComponent } from './components/league-select/league-select.component';
 import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
+import { CreateLeagueComponent } from './components/create-league/create-league.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProfileLeagueComponent } from './components/profile-league/profile-leag
     ProfileUserSelectComponent,
     LeagueComponent,
     LeagueSelectComponent,
-    ProfileLeagueComponent
+    ProfileLeagueComponent,
+    CreateLeagueComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserByAdminComponent } from './components/create-user-by-admin/create-user-by-admin.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LeagueComponent } from './components/league/league.component';
 import { LeagueSelectComponent } from './components/league-select/league-select.component';
 import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
+import { CreateLeagueComponent } from './components/create-league/create-league.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'profileUserSelect', component: ProfileUserSelectComponent},
   {path: 'leagues', component: LeagueComponent},
   {path: 'leagueSelect', component: LeagueSelectComponent},
-  {path: 'profileLeague', component: ProfileLeagueComponent}
+  {path: 'profileLeague', component: ProfileLeagueComponent},
+  {path: 'createLeague', component: CreateLeagueComponent}
 ];
 
 @NgModule({

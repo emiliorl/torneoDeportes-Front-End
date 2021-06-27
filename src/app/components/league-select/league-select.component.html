@@ -27,7 +27,7 @@
   <body class="u-body" style="overflow: hidden; margin-bottom: 5rem;">
     <section class="u-align-center u-clearfix u-section-1" id="sec-8c71">
       <div class="u-clearfix u-sheet u-valign-middle-md u-sheet-1">
-        <p class="u-align-center u-text u-text-1" style="text-transform: uppercase;">{{league.nameLeague}}</p>
+        <p class="u-align-center u-text u-text-1" style="text-transform: uppercase;word-wrap:break-word;">{{league.nameLeague}}</p>
         <div *ngIf="!user; else buttonEdit"></div>
         <ng-template #buttonEdit>
           <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>

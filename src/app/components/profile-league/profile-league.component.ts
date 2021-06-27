@@ -23,6 +23,7 @@ export class ProfileLeagueComponent implements OnInit {
   public possiblePass;
   public uri: string;
   public token; 
+  public filesToUpload: Array<File>;
   user; 
   teams: [];
   teamSelect: Team;
@@ -46,14 +47,15 @@ export class ProfileLeagueComponent implements OnInit {
   public optionsShare = ['private','public'];
 
   constructor(private restLeague:RestLeagueService, private restUser:RestUserService, private restTeam: RestTeamService, private restMatch:RestMatchService,private route:Router) {
+    this.possiblePass = '';
+    this.user = this.restUser.getUser();
+    this.token = this.restLeague.getToken();
+    this.league = this.restLeague.getLeagueSelect();
     this.uri = CONNECTION.URI;
   }
 
-  ngOnInit(): void {
-    this.league = this.restLeague.getLeague();
-    this.league = this.restLeague.getLeagueSelect();
+  ngOnInit(): void {    
     this.date = this.league.startingDate;
-    this.user = JSON.parse(localStorage.getItem('user'));
     this.listTeams();
     this.startingDate = new Date(this.league.startingDate).toLocaleDateString();
     this.startingDateFormat = this.startingDate;
@@ -115,17 +117,34 @@ export class ProfileLeagueComponent implements OnInit {
     )
   }
 
-  deleteUser(){
-    this.restUser.removeAdvancedOption(this.possiblePass,this.userAdmin._id, this.user._id).subscribe((res:any) => {
-      if(!res.userRemoved){
+  deleteLeague(){
+    this.restLeague.deleteLeague(this.user._id ,this.league._id).subscribe((res:any) => {
+      if(!res.leagueRemoved){
         alert(res.message);
       }else{
         alert(res.message);
-        localStorage.removeItem('userSelect');
-        this.route.navigateByUrl('home');
+        localStorage.removeItem('leagueSelect');
+        this.route.navigateByUrl('leagues');
       }
     },
-    (error:any) => alert(error.error.message)
+    (error:any) => alert(error.message)
     )
   }
+
+  fileChange(fileInput){
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  uploadImage(){
+    this.restLeague.uploadImage(this.user._id,this.league._id, [], this.filesToUpload, this.token, 'imageLeague')
+    .then((res:any) => {
+      if(res.league){
+        this.league.imageLeague = res.imageLeague;
+        localStorage.setItem('league', JSON.stringify(this.league));
+      }else{
+        alert(res.message)
+      }
+    })
+  }
+
 }
