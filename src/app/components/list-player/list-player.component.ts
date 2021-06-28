@@ -26,6 +26,24 @@ export class ListPlayerComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
+  listPlayer(){
+    this.restPlayer.getPlayer().subscribe((res:any) => {
+      if(res.playerFind){
+        this.player = res.playerFind;
+        delete this.teamSelect.team;
+      }else{
+        alert(res.message);
+      }
+    },
+    error => alert(error.error.message)
+    )
+  }
 
+  obtenerData(player){
+    this.restPlayer = player;
+    delete this.restPlayer.player;
+    localStorage.setItem('player', JSON.stringify(this.restPlayer));
+    this.route.navigateByUrl('profile-player')
+  }
   
 }
