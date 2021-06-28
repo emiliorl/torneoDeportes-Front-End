@@ -43,7 +43,7 @@ import { ProfilePlayerComponent } from './components/profile-player/profile-play
     LeagueSelectComponent,
     ProfileLeagueComponent,
     CreateLeagueComponent,
-    SearchPipe
+    SearchPipe,
     CreatePlayerComponent,
     ListPlayerComponent,
     ProfilePlayerComponent
