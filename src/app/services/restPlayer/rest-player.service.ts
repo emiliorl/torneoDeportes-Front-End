@@ -47,14 +47,14 @@ export class RestPlayerService {
     .pipe(map(this.extractData))
   }
 
-  updatePlayer(paramsUpdate, userId, teamId){
+  updatePlayer(paramsUpdate, userId){
     let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/'+teamId, params, this.httpOptionAuth)
+    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/', params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
-  deletePlayer(userId,teamId, password, player){
-    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, {name: player, passwordAdmin: password}, this.httpOptionAuth)
+  deletePlayer(userId,teamId){
+    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 

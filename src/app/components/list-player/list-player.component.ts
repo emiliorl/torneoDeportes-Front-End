@@ -7,11 +7,11 @@ import { User } from 'src/app/models/user';
 import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 
 @Component({
-  selector: 'app-player-selected',
-  templateUrl: './player-selected.component.html',
-  styleUrls: ['./player-selected.component.css']
+  selector: 'app-list-player',
+  templateUrl: './list-player.component.html',
+  styleUrls: ['./list-player.component.css']
 })
-export class PlayerSelectedComponent implements OnInit {
+export class ListPlayerComponent implements OnInit {
     public uri: string;
     public user: User;
     public player: Player;

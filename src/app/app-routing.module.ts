@@ -12,6 +12,9 @@ import { LeagueComponent } from './components/league/league.component';
 import { LeagueSelectComponent } from './components/league-select/league-select.component';
 import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
 import { CreateLeagueComponent } from './components/create-league/create-league.component';
+import { CreatePlayerComponent } from './components/create-player/create-player.component';
+import { ListPlayerComponent } from './components/list-player/list-player.component';
+import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,7 +30,11 @@ const routes: Routes = [
   {path: 'leagues', component: LeagueComponent},
   {path: 'leagueSelect', component: LeagueSelectComponent},
   {path: 'profileLeague', component: ProfileLeagueComponent},
-  {path: 'createLeague', component: CreateLeagueComponent}
+  {path: 'createLeague', component: CreateLeagueComponent},
+  {path: 'createPlayer', component: CreatePlayerComponent},
+  {path: 'listPlayer', component: ListPlayerComponent},
+  {path: 'profilePlayer', component: ProfilePlayerComponent},
+  
 ];
 
 @NgModule({
