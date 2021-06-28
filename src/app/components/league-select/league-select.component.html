@@ -51,21 +51,16 @@
               </tr>
             </tbody>
           </table>
-        </div>        
-        <google-chart #chart class="u-image u-image-default u-image-1"  
-          type="PieChart"
-          [data]="data"
-          height="auto"
-          [options]="options" (click)="selectTeam()">  
-        </google-chart>
-        <!-- <table class="u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
-                <tr *ngFor="let match of matches let i = index">
-                    <td>{{match.date | date: 'd/MM/yyyy'}}</td>
-                    <td>{{match.teams[0].nameTeam}}</td>
-                    <td>-</td>
-                    <td>{{match.teams[1].nameTeam}}</td>
-                </tr>            
-            </table> -->
+        </div>
+        <div *ngIf="teams == undefined || teams.length == 0; else teamsChart"></div>
+        <ng-template #teamsChart>
+          <google-chart #chart class="u-image u-image-default u-image-1"  
+            type="PieChart"
+            [data]="data"
+            height="auto"
+            [options]="options" (click)="selectTeam()">  
+          </google-chart>
+        </ng-template>                
 
         <div class="container u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
           <div class="calendar light">

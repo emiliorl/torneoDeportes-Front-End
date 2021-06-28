@@ -38,9 +38,12 @@ a {
     text-align: end;   
 }
 
+.dropdown-item{
+    padding: 0.2rem 0.8rem;
+}
+
 .dropdown-menu{
     right: 0;
-    padding-right: 11em;
 }
 
 #deportesName, #deportesName:hover{
