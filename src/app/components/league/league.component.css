@@ -34038,3 +34038,15 @@
   border: none;
   border-radius: 6px;
 }
+
+.empty:empty{
+  display: none
+}
+
+.searchHover:focus{
+  border-radius: 25px !important;
+}
+
+.searchHover{
+  color: #484848 !important;
+}
