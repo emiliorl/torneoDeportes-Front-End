@@ -27,6 +27,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { CreatePlayerComponent } from './components/create-player/create-player.component';
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
+import { CreateMatchComponent } from './components/create-match/create-match.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProfilePlayerComponent } from './components/profile-player/profile-play
     SearchPipe,
     CreatePlayerComponent,
     ListPlayerComponent,
-    ProfilePlayerComponent
+    ProfilePlayerComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,

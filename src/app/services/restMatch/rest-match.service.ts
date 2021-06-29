@@ -46,4 +46,27 @@ export class RestMatchService {
     return this.http.get(this.uri+'/'+idLeague+'/listMatches')
     .pipe(map(this.extractData));
   }
+
+  createMatch(idUser,idLeague){
+    let params = JSON.stringify(idUser,idLeague);
+    return this.http.post(this.uri+'/'+idUser+'/'+idLeague+'/createMatches/', params, this.httpOptionAuth)
+    .pipe(map(this.extractData))
+  }
+  /*
+  updateMatch(paramsUpdate, userId){
+    let params = JSON.stringify(paramsUpdate);
+    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/', params, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+
+  deleteMatch(userId,teamId){
+    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+
+  listMatch(teamId){
+    return this.http.get(this.uri+'/'+teamId+'/listPlayer')
+    .pipe(map(this.extractData));
+  }
+  */
 }
