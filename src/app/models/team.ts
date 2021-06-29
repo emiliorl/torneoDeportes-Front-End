@@ -1,5 +1,4 @@
 export class Team{
-
     constructor(
         public _id: String,
         public nameTeam: String,

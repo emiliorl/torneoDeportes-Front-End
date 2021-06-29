@@ -12,7 +12,7 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
   templateUrl: './create-match.component.html',
   styleUrls: ['./create-match.component.css']
 })
-export class CreatePlayerComponent implements OnInit {
+export class CreateMatchComponent implements OnInit {
   public match: Match;
   public user: User;
   public league: League;

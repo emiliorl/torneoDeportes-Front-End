@@ -1,11 +1,11 @@
 <body class="text-center">
     <form class="form-signin" #createPlayer="ngForm" (ngSubmit)="onSubmit(createPlayer)">
-        <h1 style="font-weight: bold; text-transform: uppercase; word-wrap:break-word;">{{player.namePlayer}}</h1>
+        <h1 style="font-weight: bold; text-transform: uppercase; word-wrap:break-word;">{{player.name}}</h1>
         <br>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputNamePlayer">Name</label>
-                <input style="text-transform: uppercase;" [(ngModel)]="player.namePlayer" #namePlayer="ngModel" name='namePlayer' class="form-control" type="text" id="inputNamePlayer" placeholder="Name of player" required>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.name" #namePlayer="ngModel" name='namePlayer' class="form-control" type="text" id="inputNamePlayer" placeholder="Name of player" required>
                 <span *ngIf="!namePlayer.valid && namePlayer.touched">
                     Campo obligatorio
                 </span>
@@ -13,11 +13,11 @@
             
             <div class="form-group col-md-6">
                 <label for="inputLastnamePlayer">Lastname</label>
-                <input style="text-transform: uppercase;" [(ngModel)]="player.lastnamePlayer" #lastnamePlayer="ngModel" name='lastnamePlayer' class="form-control" type="text" id="inputLastnamePlayer" placeholder="Lastname of player" required>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.lastname" #lastnamePlayer="ngModel" name='lastnamePlayer' class="form-control" type="text" id="inputLastnamePlayer" placeholder="Lastname of player" required>
                 <span *ngIf="!lastnamePlayer.valid && lastnamePlayer.touched">
                     Campo obligatorio
                 </span>
-            <div class="form-group col-md-6"></div>
+            </div>
         </div>
 
         <div class="form-row">
@@ -35,7 +35,7 @@
                 <span *ngIf="!age.valid && age.touched">
                     Campo obligatorio
                 </span>
-            <div class="form-group col-md-6"></div>
+            </div>
         </div>
 
         <div class="form-row">
@@ -45,7 +45,7 @@
                 <span *ngIf="!height.valid && height.touched">
                     Campo obligatorio
                 </span>
-            <div class="form-group col-md-6"></div>
+            </div>
 
             <div class="form-group col-md-6">
                 <label for="inputWeight">Weight</label>
@@ -53,7 +53,7 @@
                 <span *ngIf="!weight.valid && weight.touched">
                     Campo obligatorio
                 </span>
-            <div class="form-group col-md-6"></div>
+            </div>
         </div>
 
         <div class="form-group">

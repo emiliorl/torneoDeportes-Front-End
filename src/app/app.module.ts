@@ -29,6 +29,7 @@ import { ListPlayerComponent } from './components/list-player/list-player.compon
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 import { CreateMatchComponent } from './components/create-match/create-match.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
