@@ -17,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CreateUserByAdminComponent } from './components/create-user-by-admin/create-user-by-admin.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { ProfileUserSelectComponent } from './components/profile-user-select/profile-user-select.component';
+import { CreateHotelComponent } from './components/create-hotel/create-hotel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileUserSelectComponent } from './components/profile-user-select/pro
     ProfileComponent,
     CreateUserByAdminComponent,
     ListUserComponent,
-    ProfileUserSelectComponent
+    ProfileUserSelectComponent,
+    CreateHotelComponent
   ],
   imports: [
     BrowserModule,
