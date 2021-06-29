@@ -1,0 +1,43 @@
+body{    
+    width: 100%;
+    padding: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 15%;
+}
+
+.bd-placeholder-img{
+    font-size: 1.1rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.form-signin{
+    width: 100%;
+    max-width: 640px;
+    padding: 15px;
+    margin: auto;
+}
+
+.fomr-control{
+    position:relative;
+    box-sizing: border-box;
+    height: auto;
+    font-size: 15px;
+    padding: 15px;
+}
+
+#buttonUpdate {
+    color: #ffffff;
+    background-color: #0380A8 !important;    
+}
+
+#buttonDelete {
+    background-color: #FF605C !important;
+    color: #ffffff;
+}

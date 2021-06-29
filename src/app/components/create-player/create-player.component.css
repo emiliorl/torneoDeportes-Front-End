@@ -1,0 +1,53 @@
+body{    
+    width: 100%;
+    padding: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 15%;
+}
+
+.bd-placeholder-img{
+    font-size: 1.1rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width:768px) {
+    .bd-placeholder-img-ig{
+        font-size: 3rem;
+    }
+}
+
+.form-signin{
+    width: 100%;
+    max-width: 640px;
+    padding: 15px;
+    margin: auto;
+}
+
+.fomr-control{
+    position:relative;
+    box-sizing: border-box;
+    height: auto;
+    font-size: 15px;
+    padding: 15px;
+}
+
+#imagePerfil{
+    width: 110px;
+    height: 110px;
+    border-radius: 50px;
+}
+
+#buttonCreate{
+    background-color: #A1C22F !important;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+  }

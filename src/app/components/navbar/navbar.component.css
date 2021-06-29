@@ -5,6 +5,7 @@
     margin-left: 2rem;
     margin-right: 2rem;
     color: black;
+    text-align: end;
 }
 
 .navbar-brand{
@@ -13,7 +14,7 @@
 
 .imgUser{
     width: 115;
-    height: 70px;
+    height: 80px;
 }
 
 a {
@@ -26,13 +27,36 @@ a {
 }
 
 #navbarDropdown{
-    margin: 0.5rem 2rem;    
     text-decoration: none;
     color:#FF9100;
-    outline: none;    
+    outline: none; 
+    text-align: end;   
+}
+
+#navbarDropdown .dropdown-item{
+    margin: 0.5rem 2rem; 
+    text-align: end;   
+}
+
+.dropdown-item{
+    padding: 0.2rem 0.8rem;
 }
 
 .dropdown-menu{
     right: 0;
-    
+}
+
+#deportesName, #deportesName:hover{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    line-height: 0.9em;
+}
+
+@media (max-width: 1000px) {
+    .dropdown-menu{
+        right: 0;
+        text-align: end;
+        padding: 0;
+    }
 }

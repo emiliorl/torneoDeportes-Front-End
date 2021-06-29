@@ -1,0 +1,15 @@
+#cards {
+    margin: 2rem;
+    background-color: rgb(159, 193, 223);
+}
+
+.myWidth {
+    width: 18rem;
+    display: inline-block;
+    margin: 1.25rem;
+    height: 150px;
+}
+
+#button {
+    size: 0cm;
+}

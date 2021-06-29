@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserByAdminComponent } from './components/create-user-by-admin/create-user-by-admin.component';
 import { HomeComponent } from './components/home/home.component';
@@ -8,6 +8,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileUserSelectComponent } from './components/profile-user-select/profile-user-select.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LeagueComponent } from './components/league/league.component';
+import { LeagueSelectComponent } from './components/league-select/league-select.component';
+import { ProfileLeagueComponent } from './components/profile-league/profile-league.component';
+import { CreateLeagueComponent } from './components/create-league/create-league.component';
+import { CreatePlayerComponent } from './components/create-player/create-player.component';
+import { ListPlayerComponent } from './components/list-player/list-player.component';
+import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,7 +26,15 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'createUser', component: CreateUserByAdminComponent},
   {path: 'listUsers', component: ListUserComponent},
-  {path: 'profileUserSelect', component: ProfileUserSelectComponent}
+  {path: 'profileUserSelect', component: ProfileUserSelectComponent},
+  {path: 'leagues', component: LeagueComponent},
+  {path: 'leagueSelect', component: LeagueSelectComponent},
+  {path: 'profileLeague', component: ProfileLeagueComponent},
+  {path: 'createLeague', component: CreateLeagueComponent},
+  {path: 'createPlayer', component: CreatePlayerComponent},
+  {path: 'listPlayer', component: ListPlayerComponent},
+  {path: 'profilePlayer', component: ProfilePlayerComponent},
+  
 ];
 
 @NgModule({

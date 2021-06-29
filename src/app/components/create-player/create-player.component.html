@@ -1,0 +1,68 @@
+<body class="text-center">
+    <form class="form-signin" #createPlayer="ngForm" (ngSubmit)="onSubmit(createPlayer)">
+        <h1 style="font-weight: bold; text-transform: uppercase; word-wrap:break-word;">{{player.namePlayer}}</h1>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNamePlayer">Name</label>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.namePlayer" #namePlayer="ngModel" name='namePlayer' class="form-control" type="text" id="inputNamePlayer" placeholder="Name of player" required>
+                <span *ngIf="!namePlayer.valid && namePlayer.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="inputLastnamePlayer">Lastname</label>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.lastnamePlayer" #lastnamePlayer="ngModel" name='lastnamePlayer' class="form-control" type="text" id="inputLastnamePlayer" placeholder="Lastname of player" required>
+                <span *ngIf="!lastnamePlayer.valid && lastnamePlayer.touched">
+                    Campo obligatorio
+                </span>
+            <div class="form-group col-md-6"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputBirthday">Birthday</label>
+                <input [(ngModel)]="player.birthday" #birthday="ngModel" name="birthday" type="date" class="form-control" required>
+                <span *ngIf="!birthday.valid && birthday.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputAge">Age</label>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.age" #age="ngModel" name='age' class="form-control" type="number" id="inputAge" placeholder="Current age" required>
+                <span *ngIf="!age.valid && age.touched">
+                    Campo obligatorio
+                </span>
+            <div class="form-group col-md-6"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputHeight">Height</label>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.height" #height="ngModel" name='height' class="form-control" type="number" id="inputHeight" placeholder="Current height" required>
+                <span *ngIf="!height.valid && height.touched">
+                    Campo obligatorio
+                </span>
+            <div class="form-group col-md-6"></div>
+
+            <div class="form-group col-md-6">
+                <label for="inputWeight">Weight</label>
+                <input style="text-transform: uppercase;" [(ngModel)]="player.weight" #weight="ngModel" name='weight' class="form-control" type="text" id="inputWeight" placeholder="Current weight" required>
+                <span *ngIf="!weight.valid && weight.touched">
+                    Campo obligatorio
+                </span>
+            <div class="form-group col-md-6"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputCountry">Country</label>
+            <input style="text-transform: uppercase;" [(ngModel)]="player.country" #country="ngModel" name='country' class="form-control" type="text" id="inputCountry" placeholder="Country where was born" required>
+            <span *ngIf="!country.valid && country.touched">
+                Campo obligatorio
+            </span>
+        </div>
+        <button type="submit" class="btn col-lg-3 mx-2" id="buttonCreate" [disabled]="!createPlayer.form.valid">Create</button>
+    </form>
+</body>

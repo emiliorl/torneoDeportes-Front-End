@@ -1,0 +1,36 @@
+<body class="text-center">
+    <form class="form-signin" #createLeague="ngForm" (ngSubmit)="onSubmit(createLeague)">
+        <h1 style="font-weight: bold; text-transform: uppercase; word-wrap:break-word;">{{league.nameLeague}}</h1>
+        <br>
+        <img data-toggle="modal" data-target="#imageModal" *ngIf="league.imageLeague" id="imageLeague" class ="mb-4" width="250" height="250" src="{{uri+'getImage/'+league.imageLeague}}" alt="League Picture">
+        <img data-toggle="modal" data-target="#imageModal" *ngIf="league.imageLeague == '' || league.imageLeague == undefined" id="imageLeague" class ="mb-4" width="250" height="250" src="../../../assets/img/2.png" alt="imagen de una agenda">        
+        <hr>        
+        <div class="form-group">
+            <label for="inputNameLeague">Name league</label>
+            <input style="text-transform: uppercase;" [(ngModel)]="league.nameLeague" #nameLeague="ngModel" name='nameLeague' class="form-control" type="text" id="inputNameLeague" placeholder="NAME LEAGUE" required>
+            <span *ngIf="!nameLeague.valid && nameLeague.touched">
+                Campo obligatorio
+            </span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDate">Starting Date</label>
+                <input [(ngModel)]="league.startingDate" #startingDate="ngModel" name="startingDate" type="date" min={{todayFormat}} class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputShare">Share</label>
+                <select style="text-transform: uppercase;" [(ngModel)]="league.share" #share="ngModel" name="share" id="share" class="form-control" required>
+                    <option style="text-transform: uppercase;" *ngFor="let option of optionsShare" [value]="option">{{option}}</option>
+                </select>
+                <span *ngIf="!share.valid && share.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputDescriptionLeague">Description League</label>
+            <input [(ngModel)]="league.descriptionLeague" #description="ngModel" name='descriptionLeague' class="form-control" type="text" id="inputDescriptionLeague" placeholder="Description league">
+        </div>
+        <button type="submit" class="btn col-lg-3 mx-2" id="buttonCreate" [disabled]="!createLeague.form.valid">Create</button>
+    </form>
