@@ -16,6 +16,7 @@ export class ListPlayerComponent implements OnInit {
     public user: User;
     public player: Player;
     playerSelected: Player;
+    users: [];
 
   constructor(private restPlayer: RestPlayerService, private restUser:RestUserService, private route: Router) { 
     this.uri = CONNECTION.URI;
@@ -27,7 +28,7 @@ export class ListPlayerComponent implements OnInit {
   }
 
   listPlayer(){
-    this.restPlayer.getPlayer().subscribe((res:any) => {
+    /* this.restPlayer.getPlayer().subscribe((res:any) => {
       if(res.playerFind){
         this.player = res.playerFind;
         delete this.teamSelect.team;
@@ -36,7 +37,7 @@ export class ListPlayerComponent implements OnInit {
       }
     },
     error => alert(error.error.message)
-    )
+    ) */
   }
 
   obtenerData(player){
