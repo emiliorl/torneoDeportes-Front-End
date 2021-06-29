@@ -28,6 +28,7 @@ import { CreatePlayerComponent } from './components/create-player/create-player.
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
