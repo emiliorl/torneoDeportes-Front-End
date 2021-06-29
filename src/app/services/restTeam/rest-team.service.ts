@@ -95,7 +95,6 @@ export class RestTeamService {
     });
   }
 
-
   getTeams(idLeague){
     return this.http.get(this.uri+'/'+idLeague+'/listTeams')
     .pipe(map(this.extractData));
