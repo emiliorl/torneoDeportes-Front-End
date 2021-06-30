@@ -188,6 +188,19 @@
   height: 0;
 }
 
+#buttonCreate{
+  background-color: #A1C22F !important;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+}
+#buttonSave{
+  background-color: #A1C22F !important;
+  color: white;
+  font-weight: bold;
+}
+
 .fr-hide-by-clipping {
   position: absolute;
   width: 1px;
