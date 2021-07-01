@@ -1,13 +1,15 @@
-<h1 class="text-center">Usuarios Registrados</h1>
+<h1 class="text-center">Jugadores Registrados</h1>
 <div id="cards">    
     <hr>
-    <div class="myWidth text-white bg-secondary" *ngFor="let user of users">
+    <div class="myWidth text-white bg-secondary" *ngFor="let player of player">
+      <button id="buttonCreate" type="button" routerLink="/createPlayer">Create Player</button>
         <div class="card-body">
-          <h5 class="card-title">{{player.name}} | {{player.lastname}}</h5>
+          <h3 class="u-text u-text-2" style="font-weight: bold; text-transform: uppercase;" (click)="obtenerData(player)">{{player.name}} | {{player.lastname}}</h3>
+          <!--<h5 class="card-title">{{player.name}} | {{player.lastname}}</h5>-->
           <h6 class="card-subtitle">{{player.birthday}} | {{player.age}}</h6>
           <h6 class="card-subtitle">{{player.height}} | {{player.weight}}</h6>
           <p class="card-text">{{player.country}}</p>
-          <button class="btn btn-lg btn-primary btn-block bg-light text-info" type="button" routerLink="/profile-player">Actualizar</button>
+          <button class="btn btn-lg btn-primary btn-block bg-light text-info" type="button" routerLink="/profilePlayer">Actualizar</button>
         </div>
     </div>
 </div>
