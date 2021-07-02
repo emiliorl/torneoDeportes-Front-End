@@ -18,26 +18,21 @@ export class CreateTeamComponent implements OnInit {
   public user;
   public league;
   constructor(private restTeam : RestTeamService, private restUser: RestUserService, private route :Router, private restLeague: RestLeagueService) {
-    this.team = new Team ('','','','','','','','',null,[],[]);
+    this.team = new Team ('','','','','','','','','',null,[],[]);
     this.user = this.restUser.getUser();
     this.league = this.restLeague.getLeagueSelect();
    }
 
   ngOnInit(): void {
-    console.log('liga' + this.league);
-    console.log('usuario ' + this.user);
-    
   }
 
   onSubmit(statusForm){
-
-    console.log('Aca va esto' , this.league);
     this.restTeam.saveTeam(this.team, this.user._id, this.league._id).subscribe((res:any)=>{
       if(res.teamPush){
-        this.team = new Team ('','','','','','','','',null,[],[]);
+        this.team = new Team ('','','','','','','','','',null,[],[]);
         statusForm.reset();
         alert(res.message);
-        //enrutar cuando logre guardar
+        this.route.navigateByUrl('/leagueSelect');
       }else{
         alert(res.message);
       }

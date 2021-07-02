@@ -30,6 +30,7 @@ import { ProfilePlayerComponent } from './components/profile-player/profile-play
 import { CreateMatchComponent } from './components/create-match/create-match.component';
 import { CreateTeamComponent } from './components/create-team/create-team.component';
 import { RestTeamService } from './services/restTeam/rest-team.service';
+import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { RestTeamService } from './services/restTeam/rest-team.service';
     ListPlayerComponent,
     ProfilePlayerComponent,
     CreateMatchComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    ProfileTeamComponent,
   ],
   imports: [
     BrowserModule,
