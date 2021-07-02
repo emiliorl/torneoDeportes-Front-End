@@ -49,7 +49,7 @@ export class ProfileTeamComponent implements OnInit {
   }
 
   deleteTeam(){
-    this.restTeam.deleteTeam(this.user._id, this.league._id, this.league._id, this.possiblePass).subscribe((res:any)=>{
+    this.restTeam.deleteTeam(this.user._id, this.league._id, this.team._id, this.possiblePass).subscribe((res:any)=>{
       if(res.teamRemoved){
         alert(res.message);
         this.router.navigateByUrl('leagueSelect');
