@@ -79,8 +79,9 @@ export class LeagueSelectComponent implements OnInit {
   }
 
 
-  selectTeam(){
-    
+  selectTeam(team){
+    localStorage.setItem('teamSelect', JSON.stringify(team));
+    this.route.navigateByUrl('/profileTeam');
   }
 
   /* onSubmit(){

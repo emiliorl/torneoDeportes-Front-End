@@ -28,6 +28,9 @@ import { CreatePlayerComponent } from './components/create-player/create-player.
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 import { CreateMatchComponent } from './components/create-match/create-match.component';
+import { CreateTeamComponent } from './components/create-team/create-team.component';
+import { RestTeamService } from './services/restTeam/rest-team.service';
+import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
 
 
 @NgModule({
@@ -49,7 +52,9 @@ import { CreateMatchComponent } from './components/create-match/create-match.com
     CreatePlayerComponent,
     ListPlayerComponent,
     ProfilePlayerComponent,
-    CreateMatchComponent
+    CreateMatchComponent,
+    CreateTeamComponent,
+    ProfileTeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ import { CreateMatchComponent } from './components/create-match/create-match.com
     GoogleChartsModule  
   ],
   providers: [
-    RestUserService
+    RestUserService,
+    RestTeamService
   ],
   bootstrap: [AppComponent]
 })

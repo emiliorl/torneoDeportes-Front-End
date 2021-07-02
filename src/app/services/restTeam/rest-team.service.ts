@@ -24,7 +24,7 @@ export class RestTeamService {
 
   public user;
   public token;
-  
+  public team;
 
   private extractData(res: Response){
     let body = res;
@@ -52,30 +52,42 @@ export class RestTeamService {
       .pipe(map(this.extractData));
   }
 
-  deleteTeam(userId, leagueId, teamId, password){
-    return this.http.post(this.uri+'/'+userId+'/deleteTeam/'+leagueId+'/'+teamId, {passwordAdmin : password}, this.httpOptionAuth)
-      .pipe(map(this.extractData));
+  deleteTeam(userId, leagueId, teamId, password1){
+    console.log(password1);
+    return this.http.post(this.uri+'/'+userId+'/deleteTeam/'+leagueId+'/'+teamId, {password : password1}, this.httpOptionAuth)
+        .pipe(map(this.extractData));
   }
 
   updateTeam(userId, updateTeam, leagueId, teamId){
+    console.log(JSON.stringify(updateTeam));
     let params = JSON.stringify(updateTeam);
     return this.http.put(this.uri+'/'+userId+'/updateTeam/'+leagueId+'/'+teamId, params, this.httpOptionAuth)
       .pipe(map(this.extractData));
   }
 
-  listTeams(){
-    return this.http.get(this.uri+'/listTeams', {}).pipe(map(this.extractData));
+  listTeams(leagueId){
+    return this.http.get(this.uri+leagueId+'/listTeams', ).pipe(map(this.extractData));
   }
 
   getTeam(){
     return this.http.post(this.uri+'/getTeam', {}).pipe(map(this.extractData));
   }
 
-  uploadImage(idUser:string, params: Array<string>, files: Array<File>, token:string, name:string){
+  getTeamStorage(){
+    let team = JSON.parse(localStorage.getItem('teamSelect'));
+    if(team != undefined || team != null){
+      this.team = team;
+    }else{
+      this.team = null;
+    }
+    return this.team;
+  }
+
+  uploadImage(idUser, idLeague, idTeam, params: Array<string>, files: Array<File>, token:string, name:string){
     return new Promise((resolve, reject) => {
       var formData: any = new FormData();
       var xhr = new XMLHttpRequest();
-      let uri = this.uri+idUser+'/uploadImage';
+      let uri = this.uri+idUser+'/'+idLeague+'/uploadImage/'+idTeam;
 
       for(var i=0; i<files.length; i++){
         formData.append(name, files[i], files[i].name)
@@ -100,4 +112,5 @@ export class RestTeamService {
     .pipe(map(this.extractData));
   }
 
+  
 }
