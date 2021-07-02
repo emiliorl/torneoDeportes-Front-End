@@ -59,13 +59,7 @@ export class RestMatchService {
     .pipe(map(this.extractData));
   }
   
-  /*
-  --PENDIENTE--
-  deleteMatch(userId,teamId){
-    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, this.httpOptionAuth)
-    .pipe(map(this.extractData));
-  }
-  */
+
   
   listMatch(idLeague){
     return this.http.get(this.uri+'/'+idLeague+'/listMatches')
