@@ -41,9 +41,9 @@ export class RestPlayerService {
     return this.token;
   }
 
-  createPlayer(service,userId){
-    let params = JSON.stringify(service);
-    return this.http.post(this.uri+'/'+userId+'/createPlayer/', params, this.httpOptionAuth)
+  createPlayer(user, player){
+    let params = JSON.stringify(player);
+    return this.http.post(this.uri+'/'+user+'/createPlayer/', params, this.httpOptionAuth)
     .pipe(map(this.extractData))
   }
 

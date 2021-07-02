@@ -24,7 +24,7 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 
     onSubmit(statusForm){
       this.restPlayer.createPlayer(this.user._id, this.player).subscribe((res:any) => {
-        if(res.playerPush){
+        if(res.userSaved){
           this.player = new Player('','','',null,null,null,null,[]);
           statusForm.reset();
           this.route.navigateByUrl('player');
@@ -34,5 +34,18 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
       },
       error => alert(error.message));
     }
+  
+    /*onSubmit(statusForm){
+      this.restPlayer.createPlayer(this.user._id, this.player).subscribe((res:any) => {
+        if(res.playerPush){
+          this.player = new Player('','','',null,null,null,null,[]);
+          statusForm.reset();
+          this.route.navigateByUrl('player');
+        }else{
+          alert(res.message);
+        }
+      },
+      error => alert(error.message));
+    }*/
   
 }

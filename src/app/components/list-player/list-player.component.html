@@ -1,8 +1,8 @@
 <h1 class="text-center">Jugadores Registrados</h1>
+<button id="buttonCreate" type="button" routerLink="/createPlayer">Create Player</button>
 <div id="cards">    
     <hr>
     <div class="myWidth text-white bg-secondary" *ngFor="let player of player">
-      <button id="buttonCreate" type="button" routerLink="/createPlayer">Create Player</button>
         <div class="card-body">
           <h3 class="u-text u-text-2" style="font-weight: bold; text-transform: uppercase;" (click)="obtenerData(player)">{{player.name}} | {{player.lastname}}</h3>
           <!--<h5 class="card-title">{{player.name}} | {{player.lastname}}</h5>-->
