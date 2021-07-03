@@ -15,7 +15,9 @@ export class ListPlayerComponent implements OnInit {
     public uri: string;
     public user: User;
     public player: Player;
-    playerSelected: Player;
+    profilePlayer: Player;
+    token: string;
+    playerSelect: Player;
     users: [];
 
   constructor(private restPlayer: RestPlayerService, private restUser:RestUserService, private route: Router) { 
@@ -23,28 +25,37 @@ export class ListPlayerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.player = this.restPlayer.getPlayer();
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.player = new Player(null,'','','',null,null,null,null,[]);
+    /*this.user = JSON.parse(localStorage.getItem('user'));
+    this.token = localStorage.getItem('token');
+    this.user = this.restUser.getUser();*/
+    this.user = new User('','','','','',null,'','','');
+    this.token = localStorage.getItem('token');
+    this.user = this.restUser.getUser();
+    this.listPlayer();
   }
 
   listPlayer(){
-    /* this.restPlayer.getPlayer().subscribe((res:any) => {
+    this.restPlayer.getPlayer().subscribe((res:any) => {
       if(res.playerFind){
-        this.player = res.playerFind;
-        delete this.teamSelect.team;
+          this.player = res.playerFind;
       }else{
-        alert(res.message);
+        alert(res.message)
       }
     },
-    error => alert(error.error.message)
-    ) */
+    error => alert(error.message));
   }
 
+
   obtenerData(player){
-    this.restPlayer = player;
-    delete this.restPlayer.player;
-    localStorage.setItem('player', JSON.stringify(this.restPlayer));
-    this.route.navigateByUrl('profile-player')
+    this.playerSelect = player;
+    localStorage.setItem('playerSelect', JSON.stringify(this.playerSelect));
+    this.route.navigateByUrl('profilePlayer')
   }
+
+  /*obtenerData(player){
+    localStorage.setItem('profilePlayer', JSON.stringify(player));
+    this.route.navigateByUrl('profilePlayer')
+  }*/
   
 }

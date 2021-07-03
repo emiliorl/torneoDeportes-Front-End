@@ -14,12 +14,18 @@ export class RestPlayerService {
   public service;
   public token;
   public player;
+  public playerSelect;
 
   public httpOptionAuth = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     })    
+  };
+  public httpOptions = {
+    headers:new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
   };
 
   private extractData(res: Response){
@@ -47,14 +53,14 @@ export class RestPlayerService {
     .pipe(map(this.extractData))
   }
 
-  updatePlayer(paramsUpdate, userId){
+  updatePlayer(paramsUpdate, playerSelect){
     let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/', params, this.httpOptionAuth)
+    return this.http.put(this.uri+playerSelect+'/'+'updatePlayer/', params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
-  deletePlayer(userId,teamId){
-    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, this.httpOptionAuth)
+  deletePlayer(userId,player){
+    return this.http.post(this.uri+userId+'/deletePlayer/'+player, {} ,this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
@@ -63,13 +69,19 @@ export class RestPlayerService {
     .pipe(map(this.extractData));
   }
 
-  getPlayer(){
-    let player = JSON.parse(localStorage.getItem('league'));
-    if(player != undefined || player != null){
-      this.player = player;
+  getPlayerSelect(){
+    let playerSelect = JSON.parse(localStorage.getItem('playerSelect'));
+    if(playerSelect != undefined || playerSelect != null){
+      this.playerSelect = playerSelect;
     }else{
-      this.player = null;
+      this.playerSelect = null;
     }
-    return this.player;
+    return this.playerSelect;
   }
+
+  getPlayer(){
+    return this.http.get(this.uri+'/listPlayer', this.httpOptions)
+    .pipe(map(this.extractData));
+  }
+
 }
