@@ -8,6 +8,7 @@ export class Team{
         public country: String,
         public state: String,
         public city: String,
+        public imageTeam: String,
         public points: Number,
         public players: [],
         public league: []

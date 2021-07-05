@@ -15,6 +15,8 @@ import { CreateLeagueComponent } from './components/create-league/create-league.
 import { CreatePlayerComponent } from './components/create-player/create-player.component';
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
+import { CreateTeamComponent } from './components/create-team/create-team.component';
+import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +36,8 @@ const routes: Routes = [
   {path: 'createPlayer', component: CreatePlayerComponent},
   {path: 'listPlayer', component: ListPlayerComponent},
   {path: 'profilePlayer', component: ProfilePlayerComponent},
-  
+  {path: 'createTeam', component: CreateTeamComponent},
+  {path: 'profileTeam', component: ProfileTeamComponent}
 ];
 
 @NgModule({
