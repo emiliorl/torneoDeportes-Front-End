@@ -31,7 +31,9 @@
         <div *ngIf="!user; else buttonEdit"></div>
         <ng-template #buttonEdit>
           <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>
-          <button type="button" class="btn btn-success col-lg-3 mx-2" routerLink="/createTeam" *ngIf="teams.length <10" >Create team</button>
+          <button type="button" class="btn btn-success col-lg-3 mx-2" routerLink="/createTeam" *ngIf="teams.length <10" >Create team</button> <br>
+          <button type="button" class="btn btn-success col-lg-3 mx-2" routerLink="/createMatch" (click)="createMatches()" *ngIf="matches.length==0">Create match</button> <br>
+          <button type="button" class="btn btn-success col-lg-3 mx-2" routerLink="/createMatch" *ngIf="league.matches !=null">View matches</button>
         </ng-template>  
         <br>        
         

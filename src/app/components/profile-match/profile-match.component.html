@@ -1,0 +1,12 @@
+<body class="text-center">
+    <form class="form-signin" #updateMatch="ngForm" (ngSubmit)="onSubmit()">
+        <h1 style="font-weight: bold; text-transform: uppercase;word-wrap:break-word;">Match Update</h1>
+        <br>       
+        <div class="form-group col-md-6">
+            <label for="inputDate">Starting Date - <strong>{{league.startingDate | date: 'MM/dd/yyyy'}}</strong></label>
+            <input [(ngModel)]="league.startingDate" #startingDate="ngModel" name="startingDate" type="date" min={{todayFormat}} class="form-control" required>
+        </div>
+        <span *ngIf="!startingDate.valid && startingDate.touched">
+            Campo obligatorio
+        </span>
+    </form>

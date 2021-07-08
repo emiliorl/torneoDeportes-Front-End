@@ -2,9 +2,11 @@ export class Match{
 
     constructor(
         public teams: [],
+        public goals: [],
         public winner: [],
         public loser: [],
-        public location: String,
+        public league: [],
+        public location: [],
         public date: Date
     ){}  
 }

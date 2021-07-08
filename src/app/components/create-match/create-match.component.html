@@ -5,24 +5,28 @@
         <thead>            
             <tr>
                 <th>No.</th>
-                <th>Teams</th>            
+                <th>Teams</th>
+                <th>Teams</th>
+                <th>Goals</th>      
                 <th>Winner</th>
                 <th>Loser</th>
                 <th>Location</th>
                 <th>Date</th>
             </tr>
         </thead>
-        <tr *ngFor="let match of match let i = index">
+        <tr *ngFor="let match of matches let i = index">
             <td>{{i+1}}</td>
-            <td>{{match.teams}}</td>
+            <td>{{match.teams[0].nameTeam}}</td>
+            <td>{{match.teams[1].nameTeam}}</td>
+            <td>{{match.goals}}</td>
             <td>{{match.winner}}</td>
             <td>{{match.loser}}</td>
-            <td>{{match.location}}</td>
+            <td>{{match.location.city}}</td>
             <td>{{match.date}}</td>
             <!--
                 <td><a data-toggle="modal" data-target="#exampleModal">More_Options</a></td>    
             -->
-            <td><button id="buttonEdit" type="button" (click)="obtenerData(user)">Edit/Remove</button></td>
+            <td><button id="buttonEdit" type="button" (click)="obtenerData(match)">Edit</button></td>
         </tr>            
     </table>
   </div>

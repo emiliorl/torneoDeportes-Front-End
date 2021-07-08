@@ -22,6 +22,7 @@ export class RestMatchService {
   };
 
   public token;
+  public match;
 
   private extractData(res: Response){
     let body = res;
@@ -48,14 +49,16 @@ export class RestMatchService {
   }
 
   createMatch(idUser,idLeague){
+    console.log('id usuario',idUser);
+    console.log('id ligas',idLeague);
     let params = JSON.stringify(idUser,idLeague);
-    return this.http.post(this.uri+'/'+idUser+'/'+idLeague+'/createMatches/', params, this.httpOptionAuth)
+    return this.http.post(this.uri+'/'+idUser+'/'+idLeague+'/createMatches', {}, this.httpOptionAuth)
     .pipe(map(this.extractData))
   }
   
   updateMatch(paramsUpdate, idMatch, idLeague){
     let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+idMatch+'/'+idLeague+'/'+'updateMatch/', params, this.httpOptionAuth)
+    return this.http.put(this.uri+'/'+idMatch+'/'+idLeague+'/'+'updateMatch', params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
   
@@ -71,4 +74,13 @@ export class RestMatchService {
     .pipe(map(this.extractData));
   }
 
+  getMatchSelect(){
+    let match = JSON.parse(localStorage.getItem('matchSelect'));
+    if(match != undefined || match != null){
+      this.match = match;
+    }else{
+      this.match = null;
+    }
+    return this.match;
+  }
 }

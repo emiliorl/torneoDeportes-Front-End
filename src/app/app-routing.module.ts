@@ -17,6 +17,8 @@ import { ListPlayerComponent } from './components/list-player/list-player.compon
 import { ProfilePlayerComponent } from './components/profile-player/profile-player.component';
 import { CreateTeamComponent } from './components/create-team/create-team.component';
 import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
+import { CreateMatchComponent } from './components/create-match/create-match.component';
+import { ProfileMatchComponent } from './components/profile-match/profile-match.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,7 +39,9 @@ const routes: Routes = [
   {path: 'listPlayer', component: ListPlayerComponent},
   {path: 'profilePlayer', component: ProfilePlayerComponent},
   {path: 'createTeam', component: CreateTeamComponent},
-  {path: 'profileTeam', component: ProfileTeamComponent}
+  {path: 'profileTeam', component: ProfileTeamComponent},
+  {path: 'createMatch', component: CreateMatchComponent},
+  {path: 'profileMatch', component: ProfileMatchComponent}
 ];
 
 @NgModule({

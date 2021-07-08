@@ -16,27 +16,31 @@ export class CreateMatchComponent implements OnInit {
   public match: Match;
   public user: User;
   public league: League;
+  matches: [];
 
   constructor(private restMatch: RestMatchService, private restUser:RestUserService, private restLeague:RestLeagueService, private route: Router) {
-    this.match = new Match([],[],[], '', null);
+    this.match = new Match([],[], [],[],[], [], null);
     this.user = this.restUser.getUser();
-    this.league = this.restLeague.getLeague();
+    this.league = this.restLeague.getLeagueSelect();
    }
 
   ngOnInit(): void {
+    this.listMatch();
   }
 
-  onSubmit(statusForm){
-    this.restMatch.createMatch(this.user._id, this.match).subscribe((res:any) => {
-      if(res.matchPush){
-        this.match = new Match([],[],[], '', null);
-        statusForm.reset();
-        this.route.navigateByUrl('match');
+  listMatch(){
+    this.restMatch.listMatch(this.league._id).subscribe((res: any)=> {
+      if(res.matchFind){
+        this.matches = res.matchFind;
       }else{
         alert(res.message);
       }
-    },
-    error => alert(error.message));
+    }, error => alert(error.message));
+  }
+
+  obtenerData(match){
+    localStorage.setItem('matchSelect', JSON.stringify(match));
+    this.route.navigateByUrl('profileMatch');
   }
 
 }
