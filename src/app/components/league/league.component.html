@@ -50,9 +50,9 @@
           <div class="u-repeater u-repeater-1">
               <div class="empty u-container-style u-list-item u-repeater-item" *ngFor="let league of leagues | search:search">
                 <div class="u-container-layout u-similar-container u-container-layout-1">
-                  <img style="border-radius: 6px" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague" id="imageLeague" src="{{uri+'getImageLeague/'+league.imageLeague}}" alt="League Picture" (click)="obtenerData(league)">
-                  <img style="border-radius: 6px" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague == '' || league.imageLeague == undefined" id="imageLeague" src="../../../assets/img/2.png" alt="League Profile" (click)="obtenerData(league)">        
-                  <h3 class="u-text u-text-2" style="font-weight: bold; text-transform: uppercase;" (click)="obtenerData(league)">{{league.nameLeague}}</h3>
+                  <img style="border-radius: 6px; cursor: pointer;" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague" id="imageLeague" src="{{uri+'getImageLeague/'+league.imageLeague}}" alt="League Picture" (click)="obtenerData(league)">
+                  <img style="border-radius: 6px; cursor: pointer;" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="2000" data-image-height="1333" *ngIf="league.imageLeague == '' || league.imageLeague == undefined" id="imageLeague" src="../../../assets/img/2.png" alt="League Profile" (click)="obtenerData(league)">        
+                  <h3 class="u-text u-text-2" style="font-weight: bold; text-transform: uppercase; cursor: pointer;" (click)="obtenerData(league)">{{league.nameLeague}}</h3>
                   <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
                   <a class="u-border-1 u-border-black u-border-hover-palette-2-base u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-text-hover-palette-2-base u-btn-1" (click)="obtenerData(league)">learn more</a>
                 </div>

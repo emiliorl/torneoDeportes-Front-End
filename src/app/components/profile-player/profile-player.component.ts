@@ -19,28 +19,35 @@ export class ProfilePlayerComponent implements OnInit {
     public possiblePass;
     public token; 
     public player: Player;
-    playerSelected: Player;
+    playerSelect: Player;
 
   constructor(private restPlayer: RestPlayerService, private restUser:RestUserService, private route: Router) { 
     this.possiblePass = '';
     this.user = this.restUser.getUser();
     this.token = this.restPlayer.getToken();
+    this.player = this.restPlayer.getPlayerSelect();
     this.uri = CONNECTION.URI;
   }
 
   ngOnInit(): void {
-    this.player = this.restPlayer.getPlayer();
+    this.player = new Player(null,'','','',null,null,null,null,[]);
     this.user = JSON.parse(localStorage.getItem('user'));
+    this.player = JSON.parse(localStorage.getItem('playerSelect'));
+  }
+
+  obtenerData(player){
+    this.playerSelect = player;
+    this.route.navigateByUrl('profilePlayer')
   }
 
   onSubmit(){
     this.restPlayer.updatePlayer(this.user, this.player).subscribe((res:any) => {
       if(res.playerUpdate){
-        localStorage.setItem('player', JSON.stringify(res.playerUpdate))
+        localStorage.setItem('playerSelect', JSON.stringify(res.playerUpdate))
         alert(res.message);
       }else{
         alert(res.message);
-        this.player = this.restPlayer.getPlayer();
+        this.player = this.restPlayer.getPlayerSelect();
       }
     },
     (error:any) => alert(error.error.message)
@@ -48,13 +55,13 @@ export class ProfilePlayerComponent implements OnInit {
   }
 
   deletePlayer(){
-    this.restPlayer.deletePlayer(this.user._id ,this.team._id).subscribe((res:any) => {
+    this.restPlayer.deletePlayer(this.user._id ,this.player._id).subscribe((res:any) => {
       if(!res.playerRemoved){
         alert(res.message);
       }else{
         alert(res.message);
-        localStorage.removeItem('player');
-        this.route.navigateByUrl('list-player');
+        localStorage.removeItem('playerSelect');
+        this.route.navigateByUrl('listPlayer');
       }
     },
     (error:any) => alert(error.message)

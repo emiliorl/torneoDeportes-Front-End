@@ -51,3 +51,11 @@ body{
     border: none;
     border-radius: 6px;
   }
+
+  #buttonBack{
+    background-color: #ffffff !important;
+    color: #4989b4;
+    font-weight: bold;
+    border-color: #4989b4;
+    border-radius: 6px;
+  }
