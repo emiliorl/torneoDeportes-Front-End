@@ -39,10 +39,9 @@ export class ProfileMatchComponent implements OnInit {
   }
 
   onSubmit(){
-    /*
-    this.resMatch.updateMatch(this.date).subscribe((res:any) => {
-      if(res.matchUpdate){
-        localStorage.setItem('matchSelect', JSON.stringify(res.matchUpdate))
+    this.resMatch.updateMatch(this.match, this.league).subscribe((res:any) => {
+      if(res.matchUpdated){
+        localStorage.setItem('matchSelect', JSON.stringify(res.matchUpdated))
         alert(res.message);
       }else{
         alert(res.message);
@@ -51,7 +50,7 @@ export class ProfileMatchComponent implements OnInit {
     },
     (error:any) => alert(error.error.message)
     )
-    */
+
     }
 
   }

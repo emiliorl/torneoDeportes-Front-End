@@ -3,10 +3,11 @@
         <h1 style="font-weight: bold; text-transform: uppercase;word-wrap:break-word;">Match Update</h1>
         <br>       
         <div class="form-group col-md-6">
-            <label for="inputDate">Starting Date - <strong>{{league.startingDate | date: 'MM/dd/yyyy'}}</strong></label>
-            <input [(ngModel)]="league.startingDate" #startingDate="ngModel" name="startingDate" type="date" min={{todayFormat}} class="form-control" required>
+            <label for="inputDate">Date for match <strong>{{match.date | date: 'MM/dd/yyyy'}}</strong></label>
+            <input [(ngModel)]="match.date" #date="ngModel" name="date" type="date" min={{todayFormat}} class="form-control" required>
         </div>
-        <span *ngIf="!startingDate.valid && startingDate.touched">
+        <span *ngIf="!date.valid && date.touched">
             Campo obligatorio
         </span>
+        <button type="submit" class="btn col-lg-3 mx-2" id="buttonUpdate" [disabled]="!updateMatch.form.valid">Update</button>
     </form>

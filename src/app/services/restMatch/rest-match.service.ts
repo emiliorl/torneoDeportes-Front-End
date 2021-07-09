@@ -56,9 +56,9 @@ export class RestMatchService {
     .pipe(map(this.extractData))
   }
   
-  updateMatch(paramsUpdate, idMatch, idLeague){
-    let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+idMatch+'/'+idLeague+'/'+'updateMatch', params, this.httpOptionAuth)
+  updateMatch(Match, League){
+    let params = JSON.stringify(Match);
+    return this.http.put(this.uri + Match._id +'/'+League._id+'/'+'updateMatch', params, this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
   
