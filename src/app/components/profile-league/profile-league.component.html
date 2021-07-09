@@ -14,7 +14,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputDate">Starting Date - <strong>{{league.startingDate | date: 'MM/dd/yyyy'}}</strong></label>
+                <label for="inputDate">Starting Date - <strong>{{league.startingDate | date: 'd/MM/yyyy'}}</strong></label>
                 <input [(ngModel)]="league.startingDate" #startingDate="ngModel" name="startingDate" type="date" min={{todayFormat}} class="form-control" required>
             </div>
             <span *ngIf="!startingDate.valid && startingDate.touched">

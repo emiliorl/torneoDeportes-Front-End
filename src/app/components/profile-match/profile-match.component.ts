@@ -23,9 +23,9 @@ export class ProfileMatchComponent implements OnInit {
   date;
   updateForm;
 
-  constructor(private resMatch:RestMatchService, private resLeague:RestLeagueService, private resUser: RestUserService, private route: Router) {
+  constructor(private restMatch:RestMatchService, private resLeague:RestLeagueService, private resUser: RestUserService, private route: Router) {
     this.league = this.resLeague.getLeagueSelect();
-    this.match = this.resMatch.getMatchSelect();
+    this.match = this.restMatch.getMatchSelect();
     this.user = this.resUser.getUserSelect();
   }
 
@@ -39,13 +39,13 @@ export class ProfileMatchComponent implements OnInit {
   }
 
   onSubmit(){
-    this.resMatch.updateMatch(this.match, this.league).subscribe((res:any) => {
+    this.restMatch.updateMatch(this.match, this.league).subscribe((res:any) => {
       if(res.matchUpdated){
         localStorage.setItem('matchSelect', JSON.stringify(res.matchUpdated))
         alert(res.message);
       }else{
         alert(res.message);
-        this.league = this.resMatch.getMatchSelect();
+        this.league = this.restMatch.getMatchSelect();
       }
     },
     (error:any) => alert(error.error.message)
