@@ -31,9 +31,9 @@
         <div *ngIf="!user; else buttonEdit"></div>
         <ng-template #buttonEdit>
           <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>
-          <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams < 10" >Create team</button>
-          <button type="button" class="createButton" routerLink="/createMatch" (click)="createMatches()" *ngIf="matches.length==0">Create match</button> <br>
-          <button type="button" class="createButton" routerLink="/createMatch" *ngIf="league.matches !=null">View matches</button>
+          <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams.length < 10" >Create Team</button>
+          <button type="button" class="createButton" routerLink="/createMatch" (click)="createMatches()" *ngIf="league.matches.length==0 && league.teams.length > 3">Create match</button>
+          <button type="button" class="listButton" routerLink="/createMatch" *ngIf="league.matches != null && league.matches > 0">View Matches</button>
         </ng-template>  
         <br>        
         
@@ -70,19 +70,22 @@
           </google-chart>
         </ng-template>                
 
-        <div class="container u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
-          <div class="calendar light">
-            <div class="calendar_header">
-              <h1 class = "header_title">Upcoming matches</h1>
-            </div>
-            <div class="calendar_events" *ngFor="let match of matches">
-              <div class="event_item" *ngIf="match.date >= today">
-                <div class="ei_Title" >{{match.date | date: 'd/MM/yyyy'}}</div>
-                <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
+        <div *ngIf="matches == undefined || matches.length == 0; else upcomingMatches1"></div>
+        <ng-template #upcomingMatches1>
+          <div class="container u-image u-image-default u-image-2" style="justify-content: center;height: auto;overflow-wrap: anywhere;">
+            <div class="calendar light">
+              <div class="calendar_header">
+                <h1 class = "header_title">Upcoming matches</h1>
               </div>
+              <div class="calendar_events" *ngFor="let match of matches">
+                <div class="event_item" *ngIf="match.date >= today">
+                  <div class="ei_Title" >{{match.date | date: 'd/MM/yyyy'}}</div>
+                  <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
+        </ng-template> 
       </div>
     </section>
     

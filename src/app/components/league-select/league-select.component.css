@@ -33867,3 +33867,12 @@ body{
   border-radius: 6px;
   margin: 1rem
 }
+
+.listButton{
+  background-color: #1818af !important;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  margin: 1rem
+}
