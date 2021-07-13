@@ -31,12 +31,12 @@
             <h2 class="u-text u-text-default u-text-1">Edit team</h2>
             <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
                 <div class="u-layout">
-                    <div class="u-layout-row">
-                        <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                            <div class="u-container-layout u-container-layout-1">
-                                <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam" id="imageTeam" class ="mb-4" width="250" height="250" src="{{uri+'getImageTeam/'+team.imageTeam}}" alt="Team Picture">
-                                <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam == '' || team.imageTeam == undefined" id="imageTeam" class ="mb-4" width="250" height="250" src="../../../assets/img/escudoEquipo.png" alt="imagen de un equipo">
-                                <a data-toggle="modal" data-target="#imageModal" class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Edit image</a>
+                    <div class="u-layout-row ">
+                        <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1 " id="image">
+                            <div class="u-container-layout u-container-layout-1 align-center u-align-center-lg" aling="center">
+                                <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="{{uri+'getImageTeam/'+team.imageTeam}}" alt="Team Picture">
+                                <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam == '' || team.imageTeam == undefined" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="../../../assets/img/escudoEquipo.png" alt="imagen de un equipo">
+                                <a data-toggle="modal" data-target="#imageModal" class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Edit image</a> 
                             </div>
                         </div>
                         <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">

@@ -37,7 +37,6 @@ export class ProfileTeamComponent implements OnInit {
   }
 
   onSubmit(team){
-    console.log(this.team);
     this.restTeam.updateTeam(this.user._id, this.team, this.league._id, this.team._id).subscribe((res:any)=>{
       if(res.teamUpdated){
         alert(res.message);
@@ -66,7 +65,6 @@ export class ProfileTeamComponent implements OnInit {
   }
 
   uploadImage(){
-    console.log('usuario', this.user._id);
     this.restTeam.uploadImage(this.user._id, this.league._id, this.team._id, [], this.filesToUpload, this.token, 'imageTeam')
     .then((res : any)=>{
       if(res.team){

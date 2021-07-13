@@ -34071,3 +34071,12 @@ body{
     border: none;
     border-radius: 6px;
 }
+
+#buttonSave{
+  background-color: #A1C22F !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  margin-top: 1%;
+}

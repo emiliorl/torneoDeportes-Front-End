@@ -53,13 +53,11 @@ export class RestTeamService {
   }
 
   deleteTeam(userId, leagueId, teamId, password1){
-    console.log(password1);
     return this.http.post(this.uri+'/'+userId+'/deleteTeam/'+leagueId+'/'+teamId, {password : password1}, this.httpOptionAuth)
         .pipe(map(this.extractData));
   }
 
   updateTeam(userId, updateTeam, leagueId, teamId){
-    console.log(JSON.stringify(updateTeam));
     let params = JSON.stringify(updateTeam);
     return this.http.put(this.uri+'/'+userId+'/updateTeam/'+leagueId+'/'+teamId, params, this.httpOptionAuth)
       .pipe(map(this.extractData));
