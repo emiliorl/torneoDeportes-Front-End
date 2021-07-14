@@ -35273,3 +35273,10 @@ blockquote {
     width: 340px;
   }
 }
+
+#buttonPlayer{
+    background-color: #3399FF !important;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+}
