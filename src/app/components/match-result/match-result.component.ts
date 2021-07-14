@@ -17,30 +17,24 @@ export class MatchResultComponent implements OnInit {
   public user;
   public uri : string;
 
-  constructor(private restMatch:RestMatchService, private resLeague:RestLeagueService, private resUser: RestUserService, private route: Router) {
-    this.league = this.resLeague.getLeagueSelect();
+  constructor(private restMatch:RestMatchService, private restLeague:RestLeagueService, private restUser: RestUserService, private route: Router) {
+    this.league = this.restLeague.getLeagueSelect();
     this.match = this.restMatch.getMatchSelect();
-    this.user = this.resUser.getUserSelect();
+    this.user = this.restUser.getUser();
     this.uri = CONNECTION.URI;
   }
 
   ngOnInit(): void {
-    /*this.date = this.league.startingDate;
-    this.listTeams();
-    this.startingDate = new Date(this.league.startingDate).toLocaleDateString();
-    this.startingDateFormat = this.startingDate;
-    this.formatDate();
-    this.listMatches();*/
   }
 
   onSubmit(){
-    this.restMatch.updateMatch(this.match, this.league).subscribe((res:any) => {
-      if(res.matchUpdated){
-        localStorage.setItem('matchSelect', JSON.stringify(res.matchUpdated))
+    this.restMatch.resultMatch(this.user, this.league, this.match).subscribe((res:any) => {
+      if(res.FinalMatch){
+        localStorage.setItem('matchSelect', JSON.stringify(res.FinalMatch))
         alert(res.message);
       }else{
         alert(res.message);
-        this.league = this.restMatch.getMatchSelect();
+        this.match = this.restMatch.getMatchSelect();
       }
     },
       (error:any) => alert(error.error.message)

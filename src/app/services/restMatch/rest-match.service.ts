@@ -62,7 +62,12 @@ export class RestMatchService {
     .pipe(map(this.extractData));
   }
   
-
+  resultMatch(User, League, Match){
+    let params = JSON.stringify({team1: Match.goals[0], team2: Match.goals[1]});
+    console.log(params)
+    return this.http.put(this.uri + User._id +'/' + League._id + '/'+Match._id+'/'+'results', params, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
   
   listMatch(idLeague){
     return this.http.get(this.uri+'/'+idLeague+'/listMatches')

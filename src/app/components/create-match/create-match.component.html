@@ -5,13 +5,15 @@
         <thead>            
             <tr>
                 <th>No.</th>
-                <th>Local Team - Pts.</th>     
+                <th>Local Team - Goals</th>     
                 <th>vs</th>
-                <th>Away Team - Pts.</th>  
+                <th>Away Team - Goals</th>  
                 <th>Winner</th>
                 <th>Loser</th>
                 <th>Location</th>
                 <th>Date</th>
+                <th>Change Date</th>
+                <th>Set Result</th>
             </tr>
         </thead>
         <tr *ngFor="let match of matches let i = index">
@@ -19,9 +21,15 @@
             <td>{{match.teams[0].nameTeam}} - {{match.goals[0]}}</td>
             <td>vs</td>
             <td>{{match.teams[1].nameTeam}} - {{match.goals[1]}}</td>
-            <td>{{match.winner}}</td>
-            <td>{{match.loser}}</td>
-            <td>{{match.location.city}}</td>
+            <td *ngIf='match.winner == undefined || match.winner == null; else winnerShow'>---</td>
+            <ng-template #winnerShow>
+                <td>{{match.winner.nameTeam}}</td>
+            </ng-template>
+            <td *ngIf='match.loser == undefined || match.loser == null; else loserShow'>---</td>
+            <ng-template #loserShow>
+                <td>{{match.loser.nameTeam}}</td>
+            </ng-template>
+            <td>{{match.location.nameStadium}}</td>
             <td>{{match.date | date: 'dd/MM/yyyy'}}</td>
             <!--
                 <td><a data-toggle="modal" data-target="#exampleModal">More_Options</a></td>    
