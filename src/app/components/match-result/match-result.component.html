@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <title>Match Result</title>
+    <link rel="stylesheet" href="match-result.component.css" media="screen">
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+  </head>
+  <body class="u-body" style="margin-top: 1rem;">
+    <section class="u-align-center u-clearfix u-section-1" id="sec-8c71">
+      <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <div  class="u-align-center u-subtitle u-text u-text-1" *ngIf='match.goals == null || match.goals == undefined || match.goals.length == 0; else banners'></div>
+        <ng-template #banners>
+            <h2 class="u-align-center u-subtitle u-text u-text-1" *ngIf='match.goals[0] > match.goals[1]'>Winner</h2>
+            <h2 class="u-align-center u-subtitle u-text u-text-1" *ngIf='match.goals[0] < match.goals[1]'>Loser</h2>
+            <h2 class="u-align-center u-subtitle u-text u-text-1" *ngIf='match.goals[0] == match.goals[1]'>Draw</h2>
+            <h2 class="u-align-center u-subtitle u-text u-text-2" *ngIf='match.goals[0] < match.goals[1]'>Winner</h2>
+            <h2 class="u-align-center u-subtitle u-text u-text-2" *ngIf='match.goals[0] > match.goals[1]'>Loser</h2>
+            <h2 class="u-align-center u-subtitle u-text u-text-2" *ngIf='match.goals[0] == match.goals[1]'>Draw</h2>
+        </ng-template>
+        <img class="u-image u-image-round u-radius-10 u-image-1" data-image-width="1280" data-image-height="589" *ngIf="match.teams[0].imageTeam" src="{{uri+'getImageTeam/'+match.teams[0].imageTeam}}" alt="{{match.teams[0].nameTeam}}">
+        <img class="u-image u-image-round u-radius-10 u-image-1" data-image-width="1280" data-image-height="589" *ngIf="match.teams[0].imageTeam == '' || match.teams[0].imageTeam == undefined" src="../../../assets/img/escudoEquipo.png" alt="{{match.teams[0].nameTeam}}">
+        <img class="u-image u-image-round u-radius-10 u-image-2" data-image-width="1280" data-image-height="589" *ngIf="match.teams[1].imageTeam" src="{{uri+'getImageTeam/'+match.teams[1].imageTeam}}" alt="{{match.teams[1].nameTeam}}">
+        <img class="u-image u-image-round u-radius-10 u-image-2" data-image-width="1280" data-image-height="589" *ngIf="match.teams[1].imageTeam == '' || match.teams[1].imageTeam == undefined" src="../../../assets/img/escudoEquipo.png" alt="{{match.teams[1].nameTeam}}">
+        <div class="u-form u-form-1">
+          <form #matchResult="ngForm" (ngSubmit)="onSubmit()" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px">
+            <input type="hidden" id="siteId" name="siteId" value="31537088">
+            <input type="hidden" id="pageId" name="pageId" value="216480642">
+            <div class="u-form-group u-form-partition-factor-2 u-form-group-1">
+                <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                <input [(ngModel)]="match.goals[0]" name='goalsT1' #goals="ngModel" type="number" placeholder="{{match.teams[0].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
+                <span *ngIf="!goals.valid && goals.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+            <div class="u-form-group u-form-partition-factor-2 u-form-group-2">
+                <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                <input [(ngModel)]="match.goals[1]" name='goalsT2' #goals="ngModel" type="number" placeholder="{{match.teams[1].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
+                <span *ngIf="!goals.valid && goals.touched">
+                    Campo obligatorio
+                </span>
+            </div>
+            <div class="u-align-center u-form-group u-form-submit">
+              <button type="submit" class="u-btn u-btn-submit u-button-style" [disabled]="!matchResult.form.valid">Set Result</button>
+            </div>
+          </form>
+        </div>
+        <p class="u-align-center u-hidden-sm u-hidden-xs u-large-text u-text u-text-variant u-text-3">{{match.date | date:'EEEE, MMMM d, y'}}<br>{{match.location.nameStadium}}</p>
+        <h2 class="u-align-center u-subtitle u-text u-text-4" style="text-transform: capitalize;">{{match.teams[1].nameTeam}}</h2>
+        <h2 class="u-align-center u-subtitle u-text u-text-5" style="text-transform: capitalize;">{{match.teams[0].nameTeam}}</h2>
+      </div>
+    </section>
+  </body>
+</html>

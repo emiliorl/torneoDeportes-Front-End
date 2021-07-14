@@ -24,6 +24,7 @@ export class LeagueSelectComponent implements OnInit {
   public possiblePass; */
   public uri: string;
   public token; 
+  public match: Match;
   user; 
   teams: [];
   teamSelect: Team;
@@ -83,6 +84,18 @@ export class LeagueSelectComponent implements OnInit {
     localStorage.setItem('teamSelect', JSON.stringify(team));
     this.route.navigateByUrl('/profileTeam');
   }
+
+  createMatches(){
+    this.restMatch.createMatch(this.user._id, this.league._id).subscribe((res:any) => {
+      if(res.matchPush){
+        this.match = new Match([],[],[],[],[],[], null);
+      }else{
+        alert(res.message);
+      }
+    },
+    error => alert(error.message));
+  }
+  
 
   /* onSubmit(){
     this.restUser.updateAdvancedOption(this.user, this.userAdmin._id, this.user._id).subscribe((res:any) => {

@@ -22,6 +22,7 @@ export class RestMatchService {
   };
 
   public token;
+  public match;
 
   private extractData(res: Response){
     let body = res;
@@ -48,25 +49,38 @@ export class RestMatchService {
   }
 
   createMatch(idUser,idLeague){
+    console.log('id usuario',idUser);
+    console.log('id ligas',idLeague);
     let params = JSON.stringify(idUser,idLeague);
-    return this.http.post(this.uri+'/'+idUser+'/'+idLeague+'/createMatches/', params, this.httpOptionAuth)
+    return this.http.post(this.uri+'/'+idUser+'/'+idLeague+'/createMatches', {}, this.httpOptionAuth)
     .pipe(map(this.extractData))
   }
-  /*
-  updateMatch(paramsUpdate, userId){
-    let params = JSON.stringify(paramsUpdate);
-    return this.http.put(this.uri+'/'+userId+'/'+'updatePlayer/', params, this.httpOptionAuth)
+  
+  updateMatch(Match, League){
+    let params = JSON.stringify(Match);
+    return this.http.put(this.uri + Match._id +'/'+League._id+'/'+'updateMatch', params, this.httpOptionAuth)
+    .pipe(map(this.extractData));
+  }
+  
+
+  
+  listMatch(idLeague){
+    return this.http.get(this.uri+'/'+idLeague+'/listMatches')
+    .pipe(map(this.extractData));
+  }
+  
+  searchMatch(idMatch){
+    return this.http.get(this.uri+'/'+idMatch+'/searchMatch')
     .pipe(map(this.extractData));
   }
 
-  deleteMatch(userId,teamId){
-    return this.http.post(this.uri+'/'+userId+'/deletePlayer/'+teamId, this.httpOptionAuth)
-    .pipe(map(this.extractData));
+  getMatchSelect(){
+    let match = JSON.parse(localStorage.getItem('matchSelect'));
+    if(match != undefined || match != null){
+      this.match = match;
+    }else{
+      this.match = null;
+    }
+    return this.match;
   }
-
-  listMatch(teamId){
-    return this.http.get(this.uri+'/'+teamId+'/listPlayer')
-    .pipe(map(this.extractData));
-  }
-  */
 }

@@ -30,9 +30,9 @@
         <div class="u-clearfix u-sheet u-sheet-1">
             <h2 class="u-text u-text-default u-text-1">Edit team</h2>
             <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-                <div class="u-layout">
+                <div class="u-layout" *ngIf="token != null || token != undefined ; else teamProfile">
                     <div class="u-layout-row ">
-                        <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1 " id="image">
+                        <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1 "  >
                             <div class="u-container-layout u-container-layout-1 align-center u-align-center-lg" aling="center">
                                 <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="{{uri+'getImageTeam/'+team.imageTeam}}" alt="Team Picture">
                                 <img data-toggle="modal" data-target="#imageModal" *ngIf="team.imageTeam == '' || team.imageTeam == undefined" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="../../../assets/img/escudoEquipo.png" alt="imagen de un equipo">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
                             <div
-                                class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
+                                class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2" >
 
                                 <form class="form-createTeam"  #profileTeam="ngForm" (ngSubmit)="onSubmit(profileTeam)">
                                     <div class="form-group col-md-12">
@@ -54,7 +54,7 @@
 
                                     <div class="form-group col-md-12">
                                         <label for="inputCoach">Coach</label>
-                                        <input [(ngModel)]="team.coach"  #coach="ngModel"  name="coach" class="form-control" type="text" id="inputCoach" placeholder="Name Coach" required>
+                                        <input [(ngModel)]="team.coach"  #coach="ngModel"  name="coach" class="form-control" type="text" id="inputCoach" placeholder="Name Coach" required >
                                         <span *ngIf="!coach.valid && coach.touched">
                                             Campo obligatorio
                                         </span>
@@ -107,6 +107,81 @@
                         </div>
                     </div>
                 </div>
+                <ng-template #teamProfile>
+                    <div class="u-layout">
+                        <div class="u-layout-row ">
+                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1 "  >
+                                <div class="u-container-layout u-container-layout-1 align-center u-align-center-lg" aling="center">
+                                    <img  *ngIf="team.imageTeam" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="{{uri+'getImageTeam/'+team.imageTeam}}" alt="Team Picture">
+                                    <img  *ngIf="team.imageTeam == '' || team.imageTeam == undefined" id="imageTeam" class ="mb-4 u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs" width="250" height="250" src="../../../assets/img/escudoEquipo.png" alt="imagen de un equipo">
+                                </div>
+                            </div>
+                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                                <div
+                                    class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2" >
+    
+                                    <form class="form-createTeam"  #profileTeam="ngForm" (ngSubmit)="onSubmit(profileTeam)">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputNameTeam">Name Team</label>
+                                            <input [(ngModel)]="team.nameTeam"  #nameTeam="ngModel"  name="nameTeam" class="form-control" type="text" id="inputNameTeam" placeholder="Name team" disabled>
+                                            <span *ngIf="!nameTeam.valid && nameTeam.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputCoach">Coach</label>
+                                            <input [(ngModel)]="team.coach"  #coach="ngModel"  name="coach" class="form-control" type="text" id="inputCoach" placeholder="Name Coach" disabled >
+                                            <span *ngIf="!coach.valid && coach.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputStadium">Stadium</label>
+                                            <input [(ngModel)]="team.nameStadium"  #stadium="ngModel"  name="stadium" class="form-control" type="text" id="inputStadium" placeholder="Stadium " disabled>
+                                            <span *ngIf="!stadium.valid && stadium.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputAddress">Address</label>
+                                            <input [(ngModel)]="team.adress"  #adress="ngModel"  name="address" class="form-control" type="text" id="inputAddress" placeholder="Address" disabled>
+                                            <span *ngIf="!adress.valid && adress.touched">
+                                                *Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputCountry">Country</label>
+                                            <input [(ngModel)]="team.country"  #country="ngModel"  name="country" class="form-control" type="text" id="inputCountry" placeholder="Country" disabled>
+                                            <span *ngIf="!country.valid && country.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputState">State</label>
+                                            <input [(ngModel)]="team.state"  #state="ngModel"  name="state" class="form-control" type="text" id="inputState" placeholder="State" disabled>
+                                            <span *ngIf="!state.valid && state.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+    
+                                        <div class="form-group col-md-12">
+                                            <label for="inputCity">City</label>
+                                            <input [(ngModel)]="team.city"  #city="ngModel"  name="city" class="form-control" type="text" id="inputCity" placeholder="City" disabled>
+                                            <span *ngIf="!city.valid && city.touched">
+                                                Campo obligatorio
+                                            </span>
+                                        </div>
+                                    </form>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </section>

@@ -1,13 +1,28 @@
-<h1 class="text-center">Usuarios Registrados</h1>
+<h1 class="text-center">Jugadores Registrados</h1>
 <div id="cards">    
     <hr>
-    <div class="myWidth text-white bg-secondary" *ngFor="let user of users">
-        <div class="card-body">
-          <h5 class="card-title">{{player.name}} | {{player.lastname}}</h5>
-          <h6 class="card-subtitle">{{player.birthday}} | {{player.age}}</h6>
-          <h6 class="card-subtitle">{{player.height}} | {{player.weight}}</h6>
-          <p class="card-text">{{player.country}}</p>
-          <button class="btn btn-lg btn-primary btn-block bg-light text-info" type="button" routerLink="/profile-player">Actualizar</button>
-        </div>
-    </div>
+    <button id="buttonCreate" class="btn mx-2" type="button" routerLink="/createPlayer">Create Player</button>
+    <table>
+      <thead>            
+          <tr>
+              <th>Name</th>            
+              <th>LastName</th>
+              <th>Country</th>
+              <th>Age</th>
+              <th>Height</th>
+              <th>Weight</th>
+              <th>Options</th>
+          </tr>
+      </thead>
+      <tr *ngFor="let player of player">
+          <td>{{player.name}}</td>
+          <td>{{player.lastname}}</td>
+          <td>{{player.country}}</td>
+          <td>{{player.age}}</td>
+          <td>{{player.height}}</td>
+          <td>{{player.weight}}</td>
+          <td><button id="buttonEdit" type="button" (click)="obtenerData(player)" routerLink="/profilePlayer">Edit/Remove</button></td>
+      </tr>            
+  </table>
+  <br>
 </div>

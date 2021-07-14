@@ -1,0 +1,13 @@
+<body class="text-center">
+    <form class="form-signin" #updateMatch="ngForm" (ngSubmit)="onSubmit()">
+        <h1 style="font-weight: bold; text-transform: uppercase;word-wrap:break-word;">Match Update</h1>
+        <br>       
+        <div class="form-group col-md-6" style="margin: 0 auto 2rem;">
+            <label for="inputDate">Date for match <strong>{{match.date | date: 'dd/MM/yyyy'}}</strong></label>
+            <input [(ngModel)]="match.date" #date="ngModel" name="date" type="date" min={{todayFormat}} class="form-control" required>
+        </div>
+        <span *ngIf="!date.valid && date.touched">
+            Campo obligatorio
+        </span>
+        <button type="submit" class="btn col-lg-3 mx-2" id="buttonUpdate" [disabled]="!updateMatch.form.valid">Update</button>
+    </form>

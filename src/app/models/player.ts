@@ -1,6 +1,7 @@
 export class Player{
 
     constructor(
+        public _id: String,
         public name: String,
         public lastname: String,
         public country: String,

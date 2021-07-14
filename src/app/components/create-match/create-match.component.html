@@ -1,1 +1,33 @@
-<p>create-match works!</p>
+<h1>Match</h1>
+<div style="overflow-x:auto; margin-bottom: 2em;">
+    <br>
+    <table>
+        <thead>            
+            <tr>
+                <th>No.</th>
+                <th>Local Team - Pts.</th>     
+                <th>vs</th>
+                <th>Away Team - Pts.</th>  
+                <th>Winner</th>
+                <th>Loser</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let match of matches let i = index">
+            <td>{{i+1}}</td>
+            <td>{{match.teams[0].nameTeam}} - {{match.goals[0]}}</td>
+            <td>vs</td>
+            <td>{{match.teams[1].nameTeam}} - {{match.goals[1]}}</td>
+            <td>{{match.winner}}</td>
+            <td>{{match.loser}}</td>
+            <td>{{match.location.city}}</td>
+            <td>{{match.date | date: 'dd/MM/yyyy'}}</td>
+            <!--
+                <td><a data-toggle="modal" data-target="#exampleModal">More_Options</a></td>    
+            -->
+            <td><button id="buttonEdit" type="button" (click)="obtenerData(match)">Edit</button></td>
+            <td><button id="buttonEdit" type="button" (click)="obtenerDataResult(match)">Result</button></td>
+        </tr>            
+    </table>
+  </div>
