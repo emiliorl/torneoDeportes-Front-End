@@ -86,7 +86,6 @@ export class LeagueSelectComponent implements OnInit {
   }
 
   createMatches(){
-    console.log('Si entra funcion');
     this.restMatch.createMatch(this.user._id, this.league._id).subscribe((res:any) => {
       if(res.matchPush){
         this.match = new Match([],[],[],[],[],[], null);

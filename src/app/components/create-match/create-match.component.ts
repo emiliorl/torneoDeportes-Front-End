@@ -43,4 +43,9 @@ export class CreateMatchComponent implements OnInit {
     this.route.navigateByUrl('profileMatch');
   }
 
+  obtenerDataResult(match){
+    localStorage.setItem('matchSelect', JSON.stringify(match));
+    this.route.navigateByUrl('matchResult');
+  }
+
 }

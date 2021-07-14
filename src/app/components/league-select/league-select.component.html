@@ -31,9 +31,9 @@
         <div *ngIf="!user; else buttonEdit"></div>
         <ng-template #buttonEdit>
           <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>
-          <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams.length < 10" >Create Team</button>
-          <button type="button" class="createButton" routerLink="/createMatch" (click)="createMatches()" *ngIf="league.matches.length==0 && league.teams.length > 3">Create match</button>
-          <button type="button" class="listButton" routerLink="/createMatch" *ngIf="league.matches != null && league.matches > 0">View Matches</button>
+          <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams.length < 10 && league.matches == 0" >Create Team</button>
+          <button type="button" class="createButton" (click)="createMatches()" *ngIf="league.matches.length==0 && league.teams.length > 3">Create match</button>
+          <button type="button" class="listButton" routerLink="/createMatch" *ngIf="league.matches != null">View Matches</button>
         </ng-template>  
         <br>        
         
@@ -78,9 +78,9 @@
                 <h1 class = "header_title">Upcoming matches</h1>
               </div>
               <div class="calendar_events" *ngFor="let match of matches">
-                <div class="event_item" *ngIf="match.date >= today">
-                  <div class="ei_Title" >{{match.date | date: 'd/MM/yyyy'}}</div>
-                  <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
+                <div class="event_item" style="text-align: center;" *ngIf="match.date >= today">
+                  <div class="ei_Title" style="margin: auto;">{{match.date | date: 'd/MM/yyyy'}}</div>
+                  <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold; margin: auto;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
                 </div>
               </div>
             </div>

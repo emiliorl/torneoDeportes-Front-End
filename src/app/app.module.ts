@@ -32,6 +32,8 @@ import { CreateTeamComponent } from './components/create-team/create-team.compon
 import { RestTeamService } from './services/restTeam/rest-team.service';
 import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
 import { ProfileMatchComponent } from './components/profile-match/profile-match.component';
+import { LoginGuardGuard } from './guards/login-guard.guard';
+import { MatchResultComponent } from './components/match-result/match-result.component';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { ProfileMatchComponent } from './components/profile-match/profile-match.
     CreateTeamComponent,
     ProfileTeamComponent,
     ProfileMatchComponent,
+    MatchResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { ProfileMatchComponent } from './components/profile-match/profile-match.
   ],
   providers: [
     RestUserService,
-    RestTeamService
+    RestTeamService,
+    LoginGuardGuard
   ],
   bootstrap: [AppComponent]
 })

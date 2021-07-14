@@ -19,6 +19,8 @@ import { CreateTeamComponent } from './components/create-team/create-team.compon
 import { ProfileTeamComponent } from './components/profile-team/profile-team.component';
 import { CreateMatchComponent } from './components/create-match/create-match.component';
 import { ProfileMatchComponent } from './components/profile-match/profile-match.component';
+import { MatchResultComponent } from './components/match-result/match-result.component';
+import { LoginGuardGuard } from './guards/login-guard.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,18 +36,21 @@ const routes: Routes = [
   {path: 'leagues', component: LeagueComponent},
   {path: 'leagueSelect', component: LeagueSelectComponent},
   {path: 'profileLeague', component: ProfileLeagueComponent},
-  {path: 'createLeague', component: CreateLeagueComponent},
+  {path: 'createLeague', component: CreateLeagueComponent, canActivate : [LoginGuardGuard]},
   {path: 'createPlayer', component: CreatePlayerComponent},
   {path: 'listPlayer', component: ListPlayerComponent},
   {path: 'profilePlayer', component: ProfilePlayerComponent},
   {path: 'createTeam', component: CreateTeamComponent},
   {path: 'profileTeam', component: ProfileTeamComponent},
   {path: 'createMatch', component: CreateMatchComponent},
-  {path: 'profileMatch', component: ProfileMatchComponent}
+  {path: 'profileMatch', component: ProfileMatchComponent},
+  {path: 'matchResult', component: MatchResultComponent},
+  {path: '**' ,pathMatch   : 'full', component:HomeComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [LoginGuardGuard]
 })
 export class AppRoutingModule { }
