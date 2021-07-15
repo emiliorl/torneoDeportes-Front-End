@@ -18,13 +18,13 @@ export class MatchResultComponent implements OnInit {
   public uri : string;
 
   constructor(private restMatch:RestMatchService, private restLeague:RestLeagueService, private restUser: RestUserService, private route: Router) {
-    this.league = this.restLeague.getLeagueSelect();
-    this.match = this.restMatch.getMatchSelect();
-    this.user = this.restUser.getUser();
     this.uri = CONNECTION.URI;
   }
 
   ngOnInit(): void {
+    this.league = this.restLeague.getLeagueSelect();
+    this.match = this.restMatch.getMatchSelect();
+    this.user = this.restUser.getUser();
   }
 
   onSubmit(){

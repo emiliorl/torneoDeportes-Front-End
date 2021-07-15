@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { CONNECTION } from '../global';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class RestUserService {
   public user;
   public token;
   public userSelect;
+  helper = new JwtHelperService();
 
   private extractData(res: Response){
     let body = res;
@@ -157,4 +159,10 @@ export class RestUserService {
     return this.http.put(this.uri+'DeleteUserByAdmin/'+idUser+'/'+idAdmin, {password:password}, {headers:headers})
     .pipe(map(this.extractData));
   }
+
+  loggedIn(){
+    const token = this.getToken()
+    return this.helper.isTokenExpired(token)
+  }
+
 }

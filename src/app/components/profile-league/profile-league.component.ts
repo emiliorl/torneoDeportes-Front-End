@@ -118,13 +118,13 @@ export class ProfileLeagueComponent implements OnInit {
   }
 
   deleteLeague(){
-    this.restLeague.deleteLeague(this.user._id ,this.league._id).subscribe((res:any) => {
-      if(!res.leagueRemoved){
-        alert(res.message);
-      }else{
+    this.restLeague.deleteLeague(this.user._id ,this.league._id,this.possiblePass).subscribe((res:any) => {
+      if(res.leagueRemoved){
         alert(res.message);
         localStorage.removeItem('leagueSelect');
         this.route.navigateByUrl('leagues');
+      }else{
+        alert(res.message);
       }
     },
     (error:any) => alert(error.message)

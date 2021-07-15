@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
     <link rel="stylesheet" href="league-select.component.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    
-    
-    <script type="application/ld+json">{
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "name": ""}
-    </script>
-
-
-
-    <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
   </head>
   <body class="u-body" style="overflow: hidden; margin-bottom: 5rem;">
@@ -30,10 +11,12 @@
         <p class="u-align-center u-text u-text-1" style="text-transform: uppercase;word-wrap:break-word;">{{league.nameLeague}}</p>
         <div *ngIf="!user; else buttonEdit"></div>
         <ng-template #buttonEdit>
-          <button id="buttonEdit" type="button" *ngIf="user._id != null || user._id != undefined && league.user == user._id" (click)="obtenerData(league)">Edit/Remove</button>
-          <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams.length < 10 && league.matches == 0" >Create Team</button>
-          <button type="button" class="createButton" (click)="createMatches()" *ngIf="league.matches.length==0 && league.teams.length > 3">Create match</button>
-          <button type="button" class="listButton" routerLink="/createMatch" *ngIf="league.matches != null">View Matches</button>
+          <div *ngIf="(user._id != null || user._id != undefined) && league.user._id == user._id">
+            <button id="buttonEdit" type="button" (click)="obtenerData(league)">Edit/Remove</button>
+              <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams?.length < 10 && (matches?.length == 0 || matches == null || matches == undefined)" >Create Team</button>
+              <button type="button" class="createButton" routerLink="/createMatch" (click)="createMatches()" *ngIf="matches?.length == 0 && teams?.length > 3">Create match</button>
+              <button type="button" class="listButton" routerLink="/createMatch" *ngIf="matches?.length > 0">View Matches</button>
+          </div>
         </ng-template>  
         <br>        
         
@@ -79,8 +62,8 @@
               </div>
               <div class="calendar_events" *ngFor="let match of matches">
                 <div class="event_item" style="text-align: center;" *ngIf="match.date >= today">
-                  <div class="ei_Title" style="margin: auto;">{{match.date | date: 'd/MM/yyyy'}}</div>
-                  <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold; margin: auto;">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
+                  <div class="ei_Title" style="margin: auto;" (click)="obtenerDataResult(match)">{{match.date | date: 'd/MM/yyyy'}}</div>
+                  <div class="ei_Copy" style="text-transform: uppercase; font-weight: bold; margin: auto;" (click)="obtenerDataResult(match)">{{match.teams[0].nameTeam}} vs {{match.teams[1].nameTeam}}</div>
                 </div>
               </div>
             </div>

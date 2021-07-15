@@ -31,7 +31,7 @@ export class LeagueComponent implements OnInit {
     this.user = new User('','','','','',null,'','','');
     this.token = localStorage.getItem('token');
     this.user = this.restUser.getUser();
-    if(this.user != null){
+    if(this.user != null && !this.restUser.loggedIn()){
       this.listMyLeagues();
     }
     this.listLeagues();

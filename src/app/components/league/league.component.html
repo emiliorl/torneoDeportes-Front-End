@@ -43,7 +43,7 @@
             </div>
           </div>
         </ng-template>
-        <div *ngIf="(leagues == undefined || leagues.length == 0) && (token == null || token == undefined) ; else leaguesList" style="text-align: center;"><h1 style="font-weight: bold;">Sorry...<br>No Leagues to show</h1></div>
+        <div *ngIf="(leagues == undefined || leagues?.length == 0) && (token == null || token == undefined) ; else leaguesList" style="text-align: center;"><h1 style="font-weight: bold;">Sorry...<br>No Leagues to show</h1></div>
         <ng-template #leaguesList>
         <h1 style="font-weight: bold;">Public Leagues</h1>
         <div class="u-expanded-width u-list u-list-1">

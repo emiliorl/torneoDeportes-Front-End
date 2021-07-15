@@ -48,7 +48,7 @@ export class RestTeamService {
 
   saveTeam(team, userId, leagueId){
     let params = JSON.stringify(team);
-    return this.http.post(this.uri+'/'+userId+'/createTeam/'+leagueId, params, this.httpOptionAuth)
+    return this.http.post(this.uri+userId+'/createTeam/'+leagueId, params, this.httpOptionAuth)
       .pipe(map(this.extractData));
   }
 

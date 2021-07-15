@@ -36,7 +36,7 @@ const routes: Routes = [
   {path: 'leagues', component: LeagueComponent},
   {path: 'leagueSelect', component: LeagueSelectComponent},
   {path: 'profileLeague', component: ProfileLeagueComponent},
-  {path: 'createLeague', component: CreateLeagueComponent, canActivate : [LoginGuardGuard]},
+  {path: 'createLeague', component: CreateLeagueComponent},
   {path: 'createPlayer', component: CreatePlayerComponent},
   {path: 'listPlayer', component: ListPlayerComponent},
   {path: 'profilePlayer', component: ProfilePlayerComponent},

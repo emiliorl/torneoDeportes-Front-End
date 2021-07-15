@@ -40,13 +40,14 @@ export class LeagueSelectComponent implements OnInit {
 
 
   constructor(private restLeague:RestLeagueService, private restUser:RestUserService, private restTeam: RestTeamService, private restMatch:RestMatchService,private route:Router) {
+    this.league = this.restLeague.getLeagueSelect();
+    this.user = this.restUser.getUser();
     this.uri = CONNECTION.URI;
   }
 
   ngOnInit(): void {
-    this.league = this.restLeague.getLeague();
     this.league = this.restLeague.getLeagueSelect();
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = this.restUser.getUser();
     this.listTeams();
     this.listMatches();
   }
@@ -95,7 +96,11 @@ export class LeagueSelectComponent implements OnInit {
     },
     error => alert(error.message));
   }
-  
+
+  obtenerDataResult(match){
+    localStorage.setItem('matchSelect', JSON.stringify(match));
+    this.route.navigateByUrl('matchResult');
+  }  
 
   /* onSubmit(){
     this.restUser.updateAdvancedOption(this.user, this.userAdmin._id, this.user._id).subscribe((res:any) => {

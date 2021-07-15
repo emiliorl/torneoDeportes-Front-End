@@ -26,29 +26,46 @@
         <img class="u-image u-image-round u-radius-10 u-image-1" data-image-width="1280" data-image-height="589" *ngIf="match.teams[0].imageTeam == '' || match.teams[0].imageTeam == undefined" src="../../../assets/img/escudoEquipo.png" alt="{{match.teams[0].nameTeam}}">
         <img class="u-image u-image-round u-radius-10 u-image-2" data-image-width="1280" data-image-height="589" *ngIf="match.teams[1].imageTeam" src="{{uri+'getImageTeam/'+match.teams[1].imageTeam}}" alt="{{match.teams[1].nameTeam}}">
         <img class="u-image u-image-round u-radius-10 u-image-2" data-image-width="1280" data-image-height="589" *ngIf="match.teams[1].imageTeam == '' || match.teams[1].imageTeam == undefined" src="../../../assets/img/escudoEquipo.png" alt="{{match.teams[1].nameTeam}}">
-        <div class="u-form u-form-1">
-          <form #matchResult="ngForm" (ngSubmit)="onSubmit()" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px">
-            <input type="hidden" id="siteId" name="siteId" value="31537088">
-            <input type="hidden" id="pageId" name="pageId" value="216480642">
-            <div class="u-form-group u-form-partition-factor-2 u-form-group-1">
-                <label for="text-b51e" class="u-form-control-hidden u-label"></label>
-                <input [(ngModel)]="match.goals[0]" name='goalsT1' #goals="ngModel" type="number" placeholder="{{match.teams[0].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
-                <span *ngIf="!goals.valid && goals.touched">
-                    Campo obligatorio
-                </span>
-            </div>
-            <div class="u-form-group u-form-partition-factor-2 u-form-group-2">
-                <label for="text-b51e" class="u-form-control-hidden u-label"></label>
-                <input [(ngModel)]="match.goals[1]" name='goalsT2' #goals="ngModel" type="number" placeholder="{{match.teams[1].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
-                <span *ngIf="!goals.valid && goals.touched">
-                    Campo obligatorio
-                </span>
-            </div>
-            <div class="u-align-center u-form-group u-form-submit">
-              <button type="submit" class="u-btn u-btn-submit u-button-style" [disabled]="!matchResult.form.valid">Set Result</button>
-            </div>
-          </form>
+        <div *ngIf="user?._id == league?.user._id && user; else matchResults">
+          <div class="u-form u-form-1">
+            <form #matchResult="ngForm" (ngSubmit)="onSubmit()" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px">
+              <input type="hidden" id="siteId" name="siteId" value="31537088">
+              <input type="hidden" id="pageId" name="pageId" value="216480642">
+              <div class="u-form-group u-form-partition-factor-2 u-form-group-1">
+                  <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                  <input [(ngModel)]="match.goals[0]" name='goalsT1' #goals="ngModel" type="number" placeholder="{{match.teams[0].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
+                  <span *ngIf="!goals.valid && goals.touched">
+                      Campo obligatorio
+                  </span>
+              </div>
+              <div class="u-form-group u-form-partition-factor-2 u-form-group-2">
+                  <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                  <input [(ngModel)]="match.goals[1]" name='goalsT2' #goals="ngModel" type="number" placeholder="{{match.teams[1].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;">
+                  <span *ngIf="!goals.valid && goals.touched">
+                      Campo obligatorio
+                  </span>
+              </div>
+              <div class="u-align-center u-form-group u-form-submit">
+                <button type="submit" class="u-btn u-btn-submit u-button-style" [disabled]="!matchResult.form.valid">Set Result</button>
+              </div>
+            </form>
+          </div>
         </div>
+        <ng-template #matchResults>
+          <div class="u-form u-form-1">
+            <form #matchResult="ngForm" (ngSubmit)="onSubmit()" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px">
+              <div class="u-form-group u-form-partition-factor-2 u-form-group-1">
+                  <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                  <input [(ngModel)]="match.goals[0]" name='goalsT1' #goals="ngModel" type="number" placeholder="{{match.teams[0].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;" disabled>
+              </div>
+              <div class="u-form-group u-form-partition-factor-2 u-form-group-2">
+                  <label for="text-b51e" class="u-form-control-hidden u-label"></label>
+                  <input [(ngModel)]="match.goals[1]" name='goalsT2' #goals="ngModel" type="number" placeholder="{{match.teams[1].nameTeam}}" id="text-b51e"  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" style="text-transform: uppercase; text-align: center;" disabled>
+              </div>
+            </form>
+          </div>
+          <br><br>
+        </ng-template>
         <p class="u-align-center u-hidden-sm u-hidden-xs u-large-text u-text u-text-variant u-text-3">{{match.date | date:'EEEE, MMMM d, y'}}<br>{{match.location.nameStadium}}</p>
         <h2 class="u-align-center u-subtitle u-text u-text-4" style="text-transform: capitalize;">{{match.teams[1].nameTeam}}</h2>
         <h2 class="u-align-center u-subtitle u-text u-text-5" style="text-transform: capitalize;">{{match.teams[0].nameTeam}}</h2>

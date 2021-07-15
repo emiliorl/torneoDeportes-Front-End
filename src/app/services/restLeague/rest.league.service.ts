@@ -74,9 +74,9 @@ export class RestLeagueService {
     .pipe(map(this.extractData));
   }
 
-  deleteLeague(user, leagueDelete){
+  deleteLeague(user, leagueDelete,possiblePassword){
 
-    return this.http.post(this.uri+user+'/deleteLeague/'+leagueDelete, {} ,this.httpOptionAuth)
+    return this.http.post(this.uri+user+'/deleteLeague/'+leagueDelete, {password : possiblePassword} ,this.httpOptionAuth)
     .pipe(map(this.extractData));
   }
 
