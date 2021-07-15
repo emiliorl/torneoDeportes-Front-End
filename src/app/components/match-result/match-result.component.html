@@ -45,8 +45,9 @@
                       Campo obligatorio
                   </span>
               </div>
-              <div class="u-align-center u-form-group u-form-submit">
-                <button type="submit" class="u-btn u-btn-submit u-button-style" [disabled]="!matchResult.form.valid">Set Result</button>
+              <button type="submit" class="u-btn u-btn-submit u-button-style" [disabled]="!matchResult.form.valid">Set Result</button>
+              <div class="u-align-center u-form-group u-form-submit" *ngIf="match.winner">
+                <br>
               </div>
             </form>
           </div>

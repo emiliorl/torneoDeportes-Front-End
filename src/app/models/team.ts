@@ -10,6 +10,9 @@ export class Team{
         public city: String,
         public imageTeam: String,
         public points: Number,
+        public goalsInFavor: Number,
+        public goalsAgainst: Number,
+        public matchPlayed: Number,
         public players: [],
         public league: []
     ){}  

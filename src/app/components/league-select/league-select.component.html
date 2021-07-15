@@ -13,7 +13,7 @@
         <ng-template #buttonEdit>
           <div *ngIf="(user._id != null || user._id != undefined) && league.user._id == user._id">
             <button id="buttonEdit" type="button" (click)="obtenerData(league)">Edit/Remove</button>
-              <button type="button" class="createButton" routerLink="/createTeam" *ngIf="league.teams?.length < 10 && (matches?.length == 0 || matches == null || matches == undefined)" >Create Team</button>
+              <button type="button" class="createButton" routerLink="/createTeam" *ngIf="teams?.length < 10 && (matches?.length == 0 || matches == null || matches == undefined)" >Create Team</button>
               <button type="button" class="createButton" routerLink="/createMatch" (click)="createMatches()" *ngIf="matches?.length == 0 && teams?.length > 3">Create match</button>
               <button type="button" class="listButton" routerLink="/createMatch" *ngIf="matches?.length > 0">View Matches</button>
           </div>
@@ -29,13 +29,21 @@
             <thead class="u-palette-2-base u-table-header u-table-header-1">
               <tr style="height: 37px;">
                 <th class="u-table-cell">NAME</th>
-                <th class="u-table-cell">POINTS</th>
+                <th class="u-table-cell" style="text-align: center;">POINTS</th>
+                <th class="u-table-cell" style="text-align: center;">+ Goals</th>
+                <th class="u-table-cell" style="text-align: center;">- Goals</th>
+                <th class="u-table-cell" style="text-align: center;">Difference Goals</th>
+                <th class="u-table-cell">Match Played</th>
               </tr>
             </thead>
             <tbody class="u-align-center u-table-alt-palette-2-light-3 u-table-body">
               <tr class=trHL style="height: 65px;" *ngFor="let team of teams let i = index" (click)="selectTeam(team)">
                 <td class="u-align-left u-first-column u-table-cell u-table-cell-3" style="text-transform: uppercase;">{{team.nameTeam}}</td>
                 <td class="u-table-cell">{{team.points}}</td>
+                <td class="u-table-cell">{{team.goalsInFavor}}</td>
+                <td class="u-table-cell">{{team.goalsAgainst}}</td>
+                <td class="u-table-cell">{{team.goalsInFavor-team.goalsAgainst}}</td>
+                <td class="u-table-cell">{{team.matchPlayed}}</td>
               </tr>
             </tbody>
           </table>

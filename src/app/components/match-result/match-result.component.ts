@@ -32,6 +32,7 @@ export class MatchResultComponent implements OnInit {
       if(res.FinalMatch){
         localStorage.setItem('matchSelect', JSON.stringify(res.FinalMatch))
         alert(res.message);
+        this.route.navigateByUrl('createMatch')
       }else{
         alert(res.message);
         this.match = this.restMatch.getMatchSelect();

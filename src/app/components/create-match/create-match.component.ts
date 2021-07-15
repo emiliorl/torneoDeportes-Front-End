@@ -19,7 +19,7 @@ export class CreateMatchComponent implements OnInit {
   matches: [];
 
   constructor(private restMatch: RestMatchService, private restUser:RestUserService, private restLeague:RestLeagueService, private route: Router) {
-    this.match = new Match([],[], [],[],[], [], null);
+    this.match = new Match([],[], [],[],null,[], [], null);
     this.user = this.restUser.getUser();
     this.league = this.restLeague.getLeagueSelect();
    }
@@ -46,6 +46,10 @@ export class CreateMatchComponent implements OnInit {
   obtenerDataResult(match){
     localStorage.setItem('matchSelect', JSON.stringify(match));
     this.route.navigateByUrl('matchResult');
+  }
+
+  btnBack(){
+    this.route.navigateByUrl('leagueSelect');
   }
 
 }

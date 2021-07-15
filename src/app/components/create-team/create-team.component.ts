@@ -18,7 +18,7 @@ export class CreateTeamComponent implements OnInit {
   public user;
   public league;
   constructor(private restTeam : RestTeamService, private restUser: RestUserService, private route :Router, private restLeague: RestLeagueService) {
-    this.team = new Team ('','','','','','','','','',null,[],[]);
+    this.team = new Team ('','','','','','','','','',null,null,null,null,[],[]);
     this.user = this.restUser.getUser();
     this.league = this.restLeague.getLeagueSelect();
    }
@@ -29,7 +29,7 @@ export class CreateTeamComponent implements OnInit {
   onSubmit(statusForm){
     this.restTeam.saveTeam(this.team, this.user._id, this.league._id).subscribe((res:any)=>{
       if(res.teamPush){
-        this.team = new Team ('','','','','','','','','',null,[],[]);
+        this.team = new Team ('','','','','','','','','',null,null,null,null,[],[]);
         statusForm.reset();
         alert(res.message);
         this.route.navigateByUrl('/leagueSelect');

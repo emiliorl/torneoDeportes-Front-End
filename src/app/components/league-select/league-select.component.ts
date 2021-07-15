@@ -88,8 +88,9 @@ export class LeagueSelectComponent implements OnInit {
 
   createMatches(){
     this.restMatch.createMatch(this.user._id, this.league._id).subscribe((res:any) => {
-      if(res.matchPush){
-        this.match = new Match([],[],[],[],[],[], null);
+      if(res.leagueFind){
+        this.match = new Match([],[],[],[],null,[],[], null);
+        alert(res.message);
       }else{
         alert(res.message);
       }

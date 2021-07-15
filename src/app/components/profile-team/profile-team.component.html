@@ -100,10 +100,12 @@
                                                 Campo obligatorio
                                             </span>
                                         </div>
-    
-                                        <button type="submit" class="btn col-4" id="buttonSave" [disabled]="!profileTeam.form.valid">Edit Team</button>
-                                        <button type="button" class="btn btn-danger col-lg-3 mx-2" data-toggle="modal" data-target="#deleteTeamModal" *ngIf="league.matches.length == 0">Delete Team</button>
-                                        <button type="button" class="btn col-4" id="buttonPlayer" routerLink="/listPlayer">Players</button>
+                                        <button type="button" class="btn col-4" id="buttonPlayer" style="margin: auto 0.3rem;" routerLink="/listPlayer">Players</button>
+                                        <button type="submit" class="btn col-4" id="buttonSave" style="margin: auto 0.3rem;" [disabled]="!profileTeam.form.valid">Edit Team</button>
+                                        <div *ngIf="league.matches?.length > 0; else btnDelete"></div>
+                                        <ng-template #btnDelete>
+                                            <button type="button" class="btn btn-danger col-lg-3 mx-2" style="color: white; font-weight: bold;" data-toggle="modal" data-target="#deleteTeamModal">Delete Team</button>
+                                        </ng-template>
                                     </form>                                    
                                 </div>
                             </div>
